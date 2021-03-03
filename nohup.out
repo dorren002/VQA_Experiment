@@ -1,0 +1,271 @@
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+Loading Test Data
+Filtering Test Data
+UpDown(
+  (ques_encoder): QuestionEncoder(
+    (embedding): WordEmbedding(
+      (emb): Embedding(9319, 300)
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (lstm): LSTM(300, 512, bidirectional=True)
+  )
+  (attention): ModuleList(
+    (0): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (classifier): Classifier(
+    (relu): ReLU(inplace=True)
+    (lin1): Linear(in_features=5120, out_features=2048, bias=True)
+    (classifier): Linear(in_features=2048, out_features=1480, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
+Training...
+Using lr specified in 0.002
+{
+    "buffer_replacement_strategy": "random",
+    "config_name": "TDIUC_streaming",
+    "data_order": null,
+    "expt_name": "TDIUC_streaming_qtype_2e-3",
+    "full": false,
+    "lr": null,
+    "max_buffer_size": null,
+    "rehearsal_mode": null,
+    "resume_from": null,
+    "stream": false,
+    "stream_with_rehearsal": false,
+    "use_exponential_averaging": false
+}
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 477, in <module>
+    main()
+  File "vqa_trainer.py", line 470, in main
+    net_running)
+  File "vqa_trainer.py", line 97, in training_loop
+    for epoch in range(start_epoch, config.max_epochs):
+TypeError: 'NoneType' object cannot be interpreted as an integer
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+Loading Test Data
+Filtering Test Data
+UpDown(
+  (ques_encoder): QuestionEncoder(
+    (embedding): WordEmbedding(
+      (emb): Embedding(9319, 300)
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (lstm): LSTM(300, 512, bidirectional=True)
+  )
+  (attention): ModuleList(
+    (0): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (classifier): Classifier(
+    (relu): ReLU(inplace=True)
+    (lin1): Linear(in_features=5120, out_features=2048, bias=True)
+    (classifier): Linear(in_features=2048, out_features=1480, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
+Training...
+Using lr specified in 0.002
+{
+    "buffer_replacement_strategy": "random",
+    "config_name": "TDIUC_streaming",
+    "data_order": null,
+    "expt_name": "TDIUC_streaming_qtype_2e-3",
+    "full": false,
+    "lr": null,
+    "max_buffer_size": null,
+    "rehearsal_mode": null,
+    "resume_from": null,
+    "stream": false,
+    "stream_with_rehearsal": false,
+    "use_exponential_averaging": false
+}
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 477, in <module>
+    main()
+  File "vqa_trainer.py", line 470, in main
+    net_running)
+  File "vqa_trainer.py", line 97, in training_loop
+    for epoch in range(start_epoch, config.max_epochs):
+TypeError: 'NoneType' object cannot be interpreted as an integer
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+Loading Test Data
+Filtering Test Data
+UpDown(
+  (ques_encoder): QuestionEncoder(
+    (embedding): WordEmbedding(
+      (emb): Embedding(9319, 300)
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (lstm): LSTM(300, 512, bidirectional=True)
+  )
+  (attention): ModuleList(
+    (0): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (classifier): Classifier(
+    (relu): ReLU(inplace=True)
+    (lin1): Linear(in_features=5120, out_features=2048, bias=True)
+    (classifier): Linear(in_features=2048, out_features=1480, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
+Training...
+Using lr specified in args 0.002
+{
+    "buffer_replacement_strategy": "random",
+    "config_name": "TDIUC_streaming",
+    "data_order": "qtype",
+    "expt_name": "TDIUC_streaming_qtype_2e-3",
+    "full": false,
+    "lr": 0.002,
+    "max_buffer_size": null,
+    "rehearsal_mode": null,
+    "resume_from": null,
+    "stream": false,
+    "stream_with_rehearsal": true,
+    "use_exponential_averaging": false
+}
+7
+0
+3
+1
+8
+4
+10
+11
+5
+6
+9
+
+Performing base init on 1000 data points
+Processed 512 of 11291, Loss:7.3038 Accuracy: 0.0000, VQA Accuracy: 0.0000Processed 1000 of 11291, Loss:6.5237 Accuracy: 0.1590, VQA Accuracy: 0.1590Epoch 1, Accuracy: 0.159
+Epoch 1, VQA Accuracy: 0.159
+
+Processed 512 of 11291, Loss:2.8834 Accuracy: 0.2559, VQA Accuracy: 0.2559Processed 1000 of 11291, Loss:2.5179 Accuracy: 0.2630, VQA Accuracy: 0.2630Epoch 2, Accuracy: 0.263
+Epoch 2, VQA Accuracy: 0.263
+
+Processed 512 of 11291, Loss:2.4249 Accuracy: 0.1875, VQA Accuracy: 0.1875Processed 1000 of 11291, Loss:2.3226 Accuracy: 0.1800, VQA Accuracy: 0.1800Epoch 3, Accuracy: 0.18
+Epoch 3, VQA Accuracy: 0.18
+
+Processed 512 of 11291, Loss:2.1895 Accuracy: 0.2480, VQA Accuracy: 0.2480Processed 1000 of 11291, Loss:2.1810 Accuracy: 0.2460, VQA Accuracy: 0.2460Epoch 4, Accuracy: 0.246
+Epoch 4, VQA Accuracy: 0.246
+
+Processed 512 of 11291, Loss:2.0055 Accuracy: 0.2715, VQA Accuracy: 0.2715Processed 1000 of 11291, Loss:1.9684 Accuracy: 0.2770, VQA Accuracy: 0.2770Epoch 5, Accuracy: 0.277
+Epoch 5, VQA Accuracy: 0.277
+
+Processed 512 of 11291, Loss:1.9494 Accuracy: 0.2441, VQA Accuracy: 0.2441Processed 1000 of 11291, Loss:1.8810 Accuracy: 0.2760, VQA Accuracy: 0.2760Epoch 6, Accuracy: 0.276
+Epoch 6, VQA Accuracy: 0.276
+
+Processed 512 of 11291, Loss:1.7157 Accuracy: 0.4062, VQA Accuracy: 0.4062Processed 1000 of 11291, Loss:1.7150 Accuracy: 0.4130, VQA Accuracy: 0.4130Epoch 7, Accuracy: 0.413
+Epoch 7, VQA Accuracy: 0.413
+
+Processed 512 of 11291, Loss:1.6743 Accuracy: 0.4219, VQA Accuracy: 0.4219Processed 1000 of 11291, Loss:1.6604 Accuracy: 0.4190, VQA Accuracy: 0.4190Epoch 8, Accuracy: 0.419
+Epoch 8, VQA Accuracy: 0.419
+
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.04833333333333333, Overall: 0.05272727272727273
+
+
+Processed 512 of 11291, Loss:1.5846 Accuracy: 0.4980, VQA Accuracy: 0.4980Processed 1000 of 11291, Loss:1.5419 Accuracy: 0.5160, VQA Accuracy: 0.5160Epoch 9, Accuracy: 0.516
+Epoch 9, VQA Accuracy: 0.516
+
+Processed 512 of 11291, Loss:1.4232 Accuracy: 0.5957, VQA Accuracy: 0.5957Processed 1000 of 11291, Loss:1.4571 Accuracy: 0.5760, VQA Accuracy: 0.5760Epoch 10, Accuracy: 0.576
+Epoch 10, VQA Accuracy: 0.576
+
+Processed 512 of 11291, Loss:1.3730 Accuracy: 0.6074, VQA Accuracy: 0.6074Processed 1000 of 11291, Loss:1.3939 Accuracy: 0.6130, VQA Accuracy: 0.6130Epoch 11, Accuracy: 0.613
+Epoch 11, VQA Accuracy: 0.613
+
+Processed 512 of 11291, Loss:1.3356 Accuracy: 0.6133, VQA Accuracy: 0.6133Processed 1000 of 11291, Loss:1.3136 Accuracy: 0.6350, VQA Accuracy: 0.6350Epoch 12, Accuracy: 0.635
+Epoch 12, VQA Accuracy: 0.635
+
+Processed 512 of 11291, Loss:1.2119 Accuracy: 0.7090, VQA Accuracy: 0.7090Processed 1000 of 11291, Loss:1.2534 Accuracy: 0.6710, VQA Accuracy: 0.6710Epoch 13, Accuracy: 0.671
+Epoch 13, VQA Accuracy: 0.671
+
+Processed 512 of 11291, Loss:1.1735 Accuracy: 0.6953, VQA Accuracy: 0.6953Processed 1000 of 11291, Loss:1.1819 Accuracy: 0.6750, VQA Accuracy: 0.6750Epoch 14, Accuracy: 0.675
+Epoch 14, VQA Accuracy: 0.675
+
+Processed 512 of 11291, Loss:1.1236 Accuracy: 0.7012, VQA Accuracy: 0.7012Processed 1000 of 11291, Loss:1.1167 Accuracy: 0.7040, VQA Accuracy: 0.7040Epoch 15, Accuracy: 0.704
+Epoch 15, VQA Accuracy: 0.704
+
+Processed 512 of 11291, Loss:1.0785 Accuracy: 0.6855, VQA Accuracy: 0.6855Processed 1000 of 11291, Loss:1.0655 Accuracy: 0.7020, VQA Accuracy: 0.7020Epoch 16, Accuracy: 0.702
+Epoch 16, VQA Accuracy: 0.702
+
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.06583333333333334, Overall: 0.07181818181818182
+
+
+Processed 512 of 11291, Loss:1.0386 Accuracy: 0.7324, VQA Accuracy: 0.7324Processed 1000 of 11291, Loss:1.0173 Accuracy: 0.7290, VQA Accuracy: 0.7290Epoch 17, Accuracy: 0.729
+Epoch 17, VQA Accuracy: 0.729
+
+Processed 512 of 11291, Loss:0.9371 Accuracy: 0.7539, VQA Accuracy: 0.7539Processed 1000 of 11291, Loss:0.9603 Accuracy: 0.7310, VQA Accuracy: 0.7310Epoch 18, Accuracy: 0.731
+Epoch 18, VQA Accuracy: 0.731
+
+Processed 512 of 11291, Loss:0.9657 Accuracy: 0.7148, VQA Accuracy: 0.7148Processed 1000 of 11291, Loss:0.9122 Accuracy: 0.7470, VQA Accuracy: 0.7470Epoch 19, Accuracy: 0.747
+Epoch 19, VQA Accuracy: 0.747
+
+Processed 512 of 11291, Loss:0.8774 Accuracy: 0.7617, VQA Accuracy: 0.7617Processed 1000 of 11291, Loss:0.8882 Accuracy: 0.7450, VQA Accuracy: 0.7450Epoch 20, Accuracy: 0.745
+Epoch 20, VQA Accuracy: 0.745
+
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.065, Overall: 0.07090909090909091
+
+
+Base init completed!
+
+7
+0
+3
+1
+8
+4
+10
+11
+5
+6
+9
+
+Streaming with rehearsal...
+ Network will evaluate at: [1000, 2000, 3000, 4000, 5000, 6000, 7000, 7291, 8291, 9291, 10291, 11291]
+Processed 512 of 11776Processed 1024 of 11776Processed 1536 of 11776

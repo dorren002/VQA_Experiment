@@ -13,7 +13,7 @@ CUDA_VISIBLE_DEVICES=0 nohup python -u vqa_trainer.py \
 --expt_name ${expt} \
 --stream_with_rehearsal \
 --data_order ${DATA_ORDER} \
---lr ${lr} &> logs/${expt}.log &
+--lr ${lr} &> ../logs/${expt}.log &
 
 #DATA_ORDER=qtype # or qtype
 #expt=${CONFIG}_${DATA_ORDER}_${lr}

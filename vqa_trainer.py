@@ -381,7 +381,7 @@ def exponential_averaging(model1, model2, decay=0.999):
 def main():
     config.feat_path = f'{config.data_path}/all_tdiuc_resnetpq_{args.data_order}.h5'
 
-    config.expt_dir = 'snapshots/' + args.expt_name
+    config.expt_dir = '../snapshots/' + args.expt_name
     config.use_exponential_averaging = args.use_exponential_averaging
     config.data_order = args.data_order
     if config.data_order == 'iid':
