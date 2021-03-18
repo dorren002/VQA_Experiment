@@ -347,7 +347,7 @@ def predict(eval_net, data, epoch, expt_name, config, iter_cnt=None):
     print("\n")
     return epoch_acc, epoch_vqa_acc
 
-
+# 重要
 def get_boundaries(train_data, config):
     # return [20, 40, 60, 100]
     data = train_data.dataset.data
@@ -425,7 +425,10 @@ def main():
             config.only_first_k["train"] = i + 1
 
         print('Building Dataloaders')
-        train_data, val_data = build_dataloaders(config, mem_feat)
+        if args.q_type_only:
+            train_data, val_data = build_dataloaders(config, mem_feat, args.q_type_only)
+        else:
+            train_data, val_data = build_dataloaders(config, mem_feat)
         net = config.use_model(config)
         net_running = None
         if config.use_exponential_averaging:
@@ -464,12 +467,17 @@ def main():
         print(json.dumps(args.__dict__, indent=4, sort_keys=True))
         shutil.copy('configs/config_' + args.config_name + '.py',
                     os.path.join(config.expt_dir, 'config_' + args.config_name + '.py'))
-
+        # 没有回顾
         if not args.stream and not args.stream_with_rehearsal:
             training_loop(config, net, train_data, val_data, optimizer, criterion, config.expt_dir, start_epoch,
                           net_running)
+        # 只有一个类别
+        elif args.only_q_type:
+            train_one_type(config, net, train_data, val_data, optimizer, criterion, config.expt_dir)
+        # 正常
         elif config.max_epochs > 0:
             train_base_init(config, net, train_data, val_data, optimizer, criterion, args.expt_name, net_running)
+
         stream(net, train_data, val_data, optimizer, criterion, config, net_running)
 
 
