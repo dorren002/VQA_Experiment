@@ -15,7 +15,7 @@ for split in ['train','val']:
     annotations[split] = json.load(
         open(f'{PATH}/Annotations/{split}_1k_annotations.json'))['annotations']
 
-meta = defaultdict(list)
+meta = defaultdict(list) #默认value为list
 
 # train
 for ann in annotations['train']:
@@ -29,9 +29,10 @@ lut = dict()
 
 for m in ['a', 'atype', 'qtype']:
     most_common = Counter(meta[m]).most_common()
-    lut[f'{m}2idx'] = {a[0]: idx for idx, a in enumerate(most_common)}
+    # 由多至少排序，id从0递增  最多的：0
+    lut[f'{m}2idx'] = {a[0]: idx for idx, a in enumerate(most_common)} 
 
-json.dump(lut, open(f'{PATH}/LUT_tdiuc.json', 'w'))
+json.dump(lut, open(f'{PATH}/LUT_tdiuc.json', 'w')) # 排好序的答案
 # %%
 dt = h5py.special_dtype(vlen=str)
 for split in ['train','val']:
@@ -61,7 +62,7 @@ for split in ['train','val']:
         feat_idx = qid2idx[qid]
         ten_ans = [a['answer'] for a in ann['answers']] * 10
         ans = ten_ans[0]
-        aidx = lut['a2idx'].get(ans, -1)
+        aidx = lut['a2idx'].get(ans, -1) # 没有就是-1   answerid
         ten_aidx = np.array([lut['a2idx'].get(a, -1) for a in ten_ans])
         atypeidx = lut['atype2idx'].get('answer_type', -1)
         qtypeidx = lut['qtype2idx'].get(ann['question_type'], -1)

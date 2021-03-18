@@ -109,8 +109,9 @@ def training_loop(config, net, train_data, val_data, optimizer, criterion, expt_
 
 
 def get_base_init_loader(config, train_data):
-    boundaries = get_boundaries(train_data, config)
+    boundaries = get_boundaries(train_data, config) # 这里的train_data已经是一个切片了
     base_init_ixs = range(0, boundaries[0])
+    # 选择并打乱切片
     base_init_data_loader = build_base_init_dataloader(train_data.dataset, base_init_ixs, config.train_batch_size)
     return base_init_ixs, base_init_data_loader
 
@@ -158,7 +159,7 @@ def train_epoch(net, criterion, optimizer, data, epoch, net_running):
             p = net(qfeat, imfeat, qlen)
 
         loss = criterion(p, aidx)
-        total_loss += loss * len(qid)
+        total_loss += loss * len(qid)  #?
         _, idx = p.max(dim=1)
         if config.soft_targets:
             loss *= config.num_classes  # Maybe??
@@ -166,7 +167,7 @@ def train_epoch(net, criterion, optimizer, data, epoch, net_running):
             exact_match = torch.sum(idx == aidx.long().cuda()).item()
             correct += exact_match
         total += len(qid)
-        _, idx = p.max(dim=1, keepdim=True)
+        _, idx = p.max(dim=1, keepdim=True)   # 每行最大值
         ten_idx = ten_aidx.long().cuda()
         agreeing = torch.sum(ten_idx == idx, dim=1)
         vqa_score = torch.sum((agreeing.type(torch.float32) * 0.3).clamp(max=1))
@@ -198,7 +199,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
     net.train()
     iter_cnt = 0
     index = 0
-    boundaries = get_boundaries(data, config)
+    boundaries = get_boundaries(data, config) # data即train_data
 
     for qfeat, qseq, imfeat, qid, iid, aidx, ten_aidx, qlen in data:
         net.train()
@@ -233,6 +234,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                     net.train()
 
             inline_print('Processed {0} of {1}'.format(iter_cnt, len(data) * data.batch_size))
+        # 缓存只读一次
         elif args.stream_with_rehearsal:
             net.train()
             if iter_cnt == 0:
@@ -240,6 +242,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                 print(' Network will evaluate at: {}'.format(boundaries))
                 rehearsal_ixs = []
 
+                # 都是随机采样，区别在于buffer大小
                 if args.rehearsal_mode == 'limited_buffer':
                     rehearsal_data = build_rehearsal_dataloader_with_limited_buffer(data.dataset,
                                                                                     rehearsal_ixs,
@@ -249,26 +252,27 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                 else:
                     rehearsal_data = build_rehearsal_dataloader(data.dataset, rehearsal_ixs,
                                                                 config.num_rehearsal_samples)
-
+            # 更新buffer，每个boundary训练一次
             for Q, Qs, Im, Qid, Iid, Ai, Tai, Ql in zip(qfeat, qseq, imfeat, qid, iid, aidx, ten_aidx, qlen):
                 iter_cnt += 1
                 Qs = Qs.cuda()
                 Ql = Ql.cuda()
                 Im = Im.cuda()
-                Ai = Ai.long().cuda()
+                Ai = Ai.long().cuda() #排序的answer id
 
                 # rehearsal_ixs.append(index)
-                rehearsal_data.batch_sampler.update_buffer(index, int(Ai))
+                # index是buffer里的？id，Ai是排序的answerid
+                rehearsal_data.batch_sampler.update_buffer(index, int(Ai))# 更新buffer
 
                 # Do not stream until we reach the first boundary point
                 if index < boundaries[0]:
                     index += 1
                     continue
 
-                # Start streaming after first boundary point
+                # Start streaming after first boundary point 遇到boundary训练剩下的
                 rehearsal_data_iter = iter(rehearsal_data)
 
-                Qs, Im, Ql, Ai = Qs.unsqueeze(0), Im.unsqueeze(0), Ql.unsqueeze(0), Ai.unsqueeze(0)
+                Qs, Im, Ql, Ai = Qs.unsqueeze(0), Im.unsqueeze(0), Ql.unsqueeze(0), Ai.unsqueeze(0) # 当前的
                 if index > 0:
                     Q_r, Qs_r, Im_r, Qid_r, Iid_r, Ai_r, Tai_r, Ql_r = next(rehearsal_data_iter)
                     # print(Im_r.shape)
@@ -353,15 +357,16 @@ def get_boundaries(train_data, config):
     data = train_data.dataset.data
     num_pts = len(data)
     boundaries = []
+    # qtype
     if config.arrangement['train'] != 'random':
-        arr_idxs = [data[idx][config.arrangement['train']] for idx in range(num_pts)]
+        arr_idxs = [data[idx][config.arrangement['train']] for idx in range(num_pts)] # 列出所有qtype
         cur_idx = arr_idxs[0]
         for idx, a in enumerate(arr_idxs):
             if a != cur_idx:
                 print(cur_idx)
                 cur_idx = a
-                boundaries.append(idx)
-
+                boundaries.append(idx) #　当前数据集存在的qtype为边界
+    # 将整个数据集切分为10个subset
     elif config.arrangement['train'] == 'random':
         for i in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
             boundaries.append(int(num_pts * i))
@@ -425,12 +430,10 @@ def main():
             config.only_first_k["train"] = i + 1
 
         print('Building Dataloaders')
-        if args.q_type_only:
-            train_data, val_data = build_dataloaders(config, mem_feat, args.q_type_only)
-        else:
-            train_data, val_data = build_dataloaders(config, mem_feat)
+        train_data, val_data = build_dataloaders(config, mem_feat)
         net = config.use_model(config)
         net_running = None
+        # 没有
         if config.use_exponential_averaging:
             net_running = config.use_model(config)
             net_running.cuda()
@@ -467,17 +470,13 @@ def main():
         print(json.dumps(args.__dict__, indent=4, sort_keys=True))
         shutil.copy('configs/config_' + args.config_name + '.py',
                     os.path.join(config.expt_dir, 'config_' + args.config_name + '.py'))
-        # 没有回顾
+        # 直接训练了
         if not args.stream and not args.stream_with_rehearsal:
             training_loop(config, net, train_data, val_data, optimizer, criterion, config.expt_dir, start_epoch,
                           net_running)
-        # 只有一个类别
-        elif args.only_q_type:
-            train_one_type(config, net, train_data, val_data, optimizer, criterion, config.expt_dir)
-        # 正常
+        # 又进行了一次切片且只训练了切片部分
         elif config.max_epochs > 0:
             train_base_init(config, net, train_data, val_data, optimizer, criterion, args.expt_name, net_running)
-
         stream(net, train_data, val_data, optimizer, criterion, config, net_running)
 
 
