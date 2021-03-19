@@ -38,7 +38,7 @@ def format_data(h5file, config,
     mem_feat = dict()
     for dset in h5file.keys():
         if config.use_lstm and dset == 'qfeat':
-            mem_feat[dset] = [0] * len(h5file['qid'])
+            mem_feat[dset] = [0] * len(h5file['qid']) # n个0
         else:
             mem_feat[dset] = h5file[dset][:]
 
@@ -55,6 +55,24 @@ def format_data(h5file, config,
         data = sorted(data, key=lambda k: k[arrangement])
     elif arrangement == 'random':
         random.Random(666).shuffle(data)
+    return data
+
+
+# 只有一个qtype
+def format_data_onlyq(h5file, config, q_type, data_subset=1.0):
+    mem_feat = dict()
+    for dset in h5file.keys():
+        if config.use_lstm and dset == 'qfeat':
+            mem_feat[dset] = [0] * len(h5file['qid']) # n个0
+        else:
+            mem_feat[dset] = h5file[dset][:]
+
+    mem_feat = dictoflists2listofdicts(mem_feat)
+
+    data = []
+    for d in mem_feat:
+        if d['aidx'] == num_classes:
+            data.append(d)
     return data
 
 
@@ -187,19 +205,21 @@ def collate_batch(data_batch):
 
 
 # %%
-def build_dataloaders(config, preloaded_feat, **kwargs):
+def build_dataloaders(config, preloaded_feat, q_type_only = None, **kwargs):
     # Make val dataset, change arrangment and num_classes in config
     print('Loading Train Data')
     train_h5file = h5py.File(config.train_file, 'r')
     print('Filtering Train Data')
-
+    # full
     if config.train_on == 'valid':
         nc = config.num_classes
     else:
         nc = sys.maxsize
-
-    train_data = format_data(train_h5file, config, num_classes=nc, arrangement=config.arrangement['train'],
+    if q_type_only==None:
+        train_data = format_data(train_h5file, config, num_classes=nc, arrangement=config.arrangement['train'],
                              data_subset=config.data_subset)
+    else:
+        train_data = format_data_onlyq(train_h5file, config, q_type_only)
 
     # TODO: Compute LUT for each run
     if 'err' in kwargs:
@@ -211,11 +231,15 @@ def build_dataloaders(config, preloaded_feat, **kwargs):
     val_h5file = h5py.File(config.val_file, 'r')
 
     print('Filtering Test Data')
+    # full
     if config.test_on == 'valid':
         nc = config.num_classes
     else:
         nc = sys.maxsize
-    val_data = format_data(val_h5file, config, num_classes=nc, arrangement=config.arrangement['val'], data_subset=1.0)
+    if  q_type_only==None:
+        val_data = format_data(val_h5file, config, num_classes=nc, arrangement=config.arrangement['val'], data_subset=1.0)
+    else:
+        val_data = format_data_onlyq(val_h5_file, config, qtype)
     val_dataset = VQADataset(val_data, config, 'val', preloaded_feat)
 
     if config.fetch_all:

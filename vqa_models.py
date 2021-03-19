@@ -206,10 +206,10 @@ class Attention(nn.Module):
 
     def forward(self, qfeat, imfeat):
         num_objs = imfeat.size(1)
-        qtile = qfeat.unsqueeze(1).repeat(1, num_objs, 1)
+        qtile = qfeat.unsqueeze(1).repeat(1, num_objs, 1) # (1,num_obj,d_qfeat)
         #        print(qtile.shape)
         #        print(imfeat.shape)
-        qi = torch.cat((imfeat, qtile), 2)
+        qi = torch.cat((imfeat, qtile), 2) # 每个个体
         qi = self.relu(self.nlin(qi))
         if self.use_dropout:
             qi = self.dropout(qi)
@@ -304,7 +304,7 @@ class Q_only(nn.Module):
 
 class UpDown(nn.Module):
     def __init__(self, config):
-        super(UpDown, self).__init__()
+        super(UpDown, self).__init__() 
         assert not config.use_pooled
         self.config = config
         qfeat_dim = 2048

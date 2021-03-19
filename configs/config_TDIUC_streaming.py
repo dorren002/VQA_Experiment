@@ -23,7 +23,7 @@ map_path = f'{data_path}/map_tdiuc_resnet.json'
 
 train_file = f'{data_path}/train_1k_{dataset}.h5'
 val_file = f'{data_path}/val_1k_{dataset}.h5'
-
+  
 train_batch_size = 512
 val_batch_size = 512
 num_classes = 1480  # Number of classifier units 1480 for TDIUC, 31xx for VQA,28 for CLEVR
