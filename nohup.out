@@ -269,3 +269,80 @@ Base init completed!
 Streaming with rehearsal...
  Network will evaluate at: [1000, 2000, 3000, 4000, 5000, 6000, 7000, 7291, 8291, 9291, 10291, 11291]
 Processed 512 of 11776Processed 1024 of 11776Processed 1536 of 11776
+
+Boundary 2000 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.09500000000000001, Overall: 0.10363636363636364
+
+
+Processed 2048 of 11776Processed 2560 of 11776
+
+Boundary 3000 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.22416666666666665, Overall: 0.24454545454545454
+
+
+Processed 3072 of 11776Processed 3584 of 11776
+
+Boundary 4000 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.24916666666666665, Overall: 0.2718181818181818
+
+
+Processed 4096 of 11776Processed 4608 of 11776
+
+Boundary 5000 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.2708333333333333, Overall: 0.29545454545454547
+
+
+Processed 5120 of 11776Processed 5632 of 11776
+
+Boundary 6000 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.29333333333333333, Overall: 0.32
+
+
+Processed 6144 of 11776Processed 6656 of 11776
+
+Boundary 7000 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.37250000000000005, Overall: 0.40636363636363637
+
+
+Processed 7168 of 11776
+
+Boundary 7291 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.3416666666666666, Overall: 0.37272727272727274
+
+
+Processed 7680 of 11776Processed 8192 of 11776
+
+Boundary 8291 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.365, Overall: 0.3981818181818182
+
+
+Processed 8704 of 11776Processed 9216 of 11776
+
+Boundary 9291 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.39499999999999996, Overall: 0.4309090909090909
+
+
+Processed 9728 of 11776Processed 10240 of 11776
+
+Boundary 10291 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.4266666666666667, Overall: 0.46545454545454545
+
+
+Processed 10752 of 11776Processed 11264 of 11776
+
+Boundary 11291 reached, evaluating...
+Testing...
+Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.49333333333333323, Overall: 0.5381818181818182
+
+
+Processed 11291 of 11776
