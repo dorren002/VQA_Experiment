@@ -430,7 +430,10 @@ def main():
             config.only_first_k["train"] = i + 1
 
         print('Building Dataloaders')
-        train_data, val_data = build_dataloaders(config, mem_feat)
+        if args.only_qtype:
+            train_data, val_data = build_dataloaders(config, mem_feat, args.only_qtype)
+        else:
+            train_data, val_data = build_dataloaders(config, mem_feat)
         net = config.use_model(config)
         net_running = None
         # 没有
