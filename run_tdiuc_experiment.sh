@@ -5,7 +5,7 @@ lr=2e-3
 CONFIG=TDIUC_streaming
 export PYTHONPATH=/home/qzhb/dorren/CL4VQA/REMIND
 
-DATA_ORDER=qtype
+DATA_ORDER=iid
 expt=${CONFIG}_${DATA_ORDER}_${lr}
 
 CUDA_VISIBLE_DEVICES=0 nohup python -u vqa_trainer.py \

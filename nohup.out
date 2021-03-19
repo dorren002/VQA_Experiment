@@ -345,4 +345,11 @@ Testing...
 Processed 512 of 1536Processed 1024 of 1536Processed 1100 of 1536Mean Per Type: 0.49333333333333323, Overall: 0.5381818181818182
 
 
-Processed 11291 of 11776
+Processed 11291 of 11776loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Building Dataloaders
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 487, in <module>
+    main()
+  File "vqa_trainer.py", line 433, in main
+    if args.only_qtype:
+AttributeError: 'Namespace' object has no attribute 'only_qtype'
