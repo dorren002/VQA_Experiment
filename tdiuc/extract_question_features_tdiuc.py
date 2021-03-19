@@ -21,8 +21,8 @@ gensen_1 = GenSenSingle(
 )
 
 for split in ['train','val']:
-    feat_h5 = h5py.File(f'{DATA_PATH}/questions_{split}_1k_tdiuc.h5', 'w')
-    ques = json.load(open(f'{DATA_PATH}/Questions/{split}_1k_questions.json'))
+    feat_h5 = h5py.File(f'{DATA_PATH}/questions_{split}_1w_tdiuc.h5', 'w')
+    ques = json.load(open(f'{DATA_PATH}/Questions/{split}_1w_questions.json'))
     ques = ques['questions']
     questions = [q['question'] for q in ques]
     qids = [q['question_id'] for q in ques]

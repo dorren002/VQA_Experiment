@@ -13,7 +13,7 @@ annotations = dict()
 
 for split in ['train','val']:
     annotations[split] = json.load(
-        open(f'{PATH}/Annotations/{split}_1k_annotations.json'))['annotations']
+        open(f'{PATH}/Annotations/{split}_1w_annotations.json'))['annotations']
 
 meta = defaultdict(list) #默认value为list
 
@@ -36,7 +36,7 @@ json.dump(lut, open(f'{PATH}/LUT_tdiuc.json', 'w')) # 排好序的答案
 # %%
 dt = h5py.special_dtype(vlen=str)
 for split in ['train','val']:
-    qfeat_file = h5py.File(f'{PATH}/questions_{split}_1k_tdiuc.h5', 'r')
+    qfeat_file = h5py.File(f'{PATH}/questions_{split}_1w_tdiuc.h5', 'r')
 
     mem_feat = dict()
     for dset in qfeat_file.keys():
@@ -44,7 +44,7 @@ for split in ['train','val']:
     qids = mem_feat['qids'][:]
     qid2idx = {qid: idx for idx, qid in enumerate(qids)}
     num_instances = len(annotations[split])
-    h5file = h5py.File(f'{PATH}/{split}_1k_tdiuc.h5', 'w')
+    h5file = h5py.File(f'{PATH}/{split}_1w_tdiuc.h5', 'w')
     h5file.create_dataset('qfeat', (num_instances, 2048), dtype=np.float32)
     h5file.create_dataset('qid', (num_instances,), dtype=np.int64)
     h5file.create_dataset('iid', (num_instances,), dtype=np.int64)

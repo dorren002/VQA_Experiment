@@ -8,12 +8,12 @@ import json
 
 print("Starting the encoding process...")
 # Change these based on data set
-PATH = '/home/qzhb/dorren/CL4VQA//TDIUC'  # Change this
+PATH = '/home/qzhb/dorren/CL4VQA/TDIUC'  # Change this
 streaming_type = 'qtype'  # Change this
 
 # Probably don't need to be changed
 feat_name = f'{PATH}/all_tdiuc_resnet'
-train_filename = f'{PATH}/train_1k_tdiuc.h5'
+train_filename = f'{PATH}/train_1w_tdiuc.h5'
 lut_name = f'{PATH}/map_tdiuc_resnet.json'
 
 feat_dim = 2048
@@ -21,6 +21,7 @@ num_feat_maps = 49
 
 train_data = h5py.File(train_filename, 'r')
 lut = json.load(open(lut_name))
+print(lut['image_id_to_ix']['172813'])
 feat_h5 = h5py.File(f'{feat_name}.h5', 'r')
 
 if streaming_type == 'iid':

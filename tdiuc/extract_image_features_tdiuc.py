@@ -109,6 +109,8 @@ def main(args):
 
         iid2idx = {str(iid): idx for idx, iid in enumerate(iid_list)}
         idx2iid = {idx: str(iid) for idx, iid in enumerate(iid_list)}
+        
+        print(iid2idx['172813'])
 
         lut = dict()
         lut['image_id_to_ix'] = iid2idx
