@@ -225,3 +225,299 @@ Original Traceback (most recent call last):
     raise ValueError("Index (%s) out of range (0-%s)" % (exp, length-1))
 ValueError: Index (20217) out of range (0-11462)
 
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Namespace(buffer_replacement_strategy='random', config_name='TDIUC_streaming', data_order='iid', expt_name='TDIUC_streaming_iid_2e-3', full=False, lr=0.002, max_buffer_size=None, only_qtype=-1, rehearsal_mode=None, resume_from=None, stream=False, stream_with_rehearsal=True, use_exponential_averaging=False)
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+Loading Test Data
+Filtering Test Data
+UpDown(
+  (ques_encoder): QuestionEncoder(
+    (embedding): WordEmbedding(
+      (emb): Embedding(9319, 300)
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (lstm): LSTM(300, 512, bidirectional=True)
+  )
+  (attention): ModuleList(
+    (0): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (classifier): Classifier(
+    (relu): ReLU(inplace=True)
+    (lin1): Linear(in_features=5120, out_features=2048, bias=True)
+    (classifier): Linear(in_features=2048, out_features=1480, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
+Training...
+Using lr specified in args 0.002
+{
+    "buffer_replacement_strategy": "random",
+    "config_name": "TDIUC_streaming",
+    "data_order": "iid",
+    "expt_name": "TDIUC_streaming_iid_2e-3",
+    "full": false,
+    "lr": 0.002,
+    "max_buffer_size": null,
+    "only_qtype": -1,
+    "rehearsal_mode": null,
+    "resume_from": null,
+    "stream": false,
+    "stream_with_rehearsal": true,
+    "use_exponential_averaging": false
+}
+
+Performing base init on 5000 data points
+Processed 512 of 50000, Loss:7.2957 Accuracy: 0.0020, VQA Accuracy: 0.0020Processed 1024 of 50000, Loss:6.7130 Accuracy: 0.1416, VQA Accuracy: 0.1416Processed 1536 of 50000, Loss:5.8341 Accuracy: 0.1868, VQA Accuracy: 0.1868Processed 2048 of 50000, Loss:5.4405 Accuracy: 0.2056, VQA Accuracy: 0.2056Processed 2560 of 50000, Loss:5.1755 Accuracy: 0.2020, VQA Accuracy: 0.2020Processed 3072 of 50000, Loss:4.8273 Accuracy: 0.2113, VQA Accuracy: 0.2113Processed 3584 of 50000, Loss:4.5716 Accuracy: 0.2299, VQA Accuracy: 0.2299Processed 4096 of 50000, Loss:4.4005 Accuracy: 0.2410, VQA Accuracy: 0.2410Processed 4608 of 50000, Loss:4.2647 Accuracy: 0.2511, VQA Accuracy: 0.2511Processed 5000 of 50000, Loss:4.1656 Accuracy: 0.2586, VQA Accuracy: 0.2586Epoch 1, Accuracy: 0.2586
+Epoch 1, VQA Accuracy: 0.2586
+
+Processed 512 of 50000, Loss:2.7691 Accuracy: 0.3730, VQA Accuracy: 0.3730Processed 1024 of 50000, Loss:2.7731 Accuracy: 0.3633, VQA Accuracy: 0.3633Processed 1536 of 50000, Loss:2.7437 Accuracy: 0.3535, VQA Accuracy: 0.3535Processed 2048 of 50000, Loss:2.6665 Accuracy: 0.3564, VQA Accuracy: 0.3564Processed 2560 of 50000, Loss:2.6230 Accuracy: 0.3617, VQA Accuracy: 0.3617Processed 3072 of 50000, Loss:2.6117 Accuracy: 0.3590, VQA Accuracy: 0.3590Processed 3584 of 50000, Loss:2.5738 Accuracy: 0.3605, VQA Accuracy: 0.3605Processed 4096 of 50000, Loss:2.5624 Accuracy: 0.3550, VQA Accuracy: 0.3550Processed 4608 of 50000, Loss:2.5297 Accuracy: 0.3633, VQA Accuracy: 0.3633Processed 5000 of 50000, Loss:2.5160 Accuracy: 0.3642, VQA Accuracy: 0.3642Epoch 2, Accuracy: 0.3642
+Epoch 2, VQA Accuracy: 0.3642
+
+Processed 512 of 50000, Loss:2.1470 Accuracy: 0.3945, VQA Accuracy: 0.3945Processed 1024 of 50000, Loss:2.1945 Accuracy: 0.3770, VQA Accuracy: 0.3770Processed 1536 of 50000, Loss:2.1916 Accuracy: 0.3815, VQA Accuracy: 0.3815Processed 2048 of 50000, Loss:2.2081 Accuracy: 0.3750, VQA Accuracy: 0.3750Processed 2560 of 50000, Loss:2.1940 Accuracy: 0.3832, VQA Accuracy: 0.3832Processed 3072 of 50000, Loss:2.1734 Accuracy: 0.3835, VQA Accuracy: 0.3835Processed 3584 of 50000, Loss:2.1538 Accuracy: 0.3898, VQA Accuracy: 0.3898Processed 4096 of 50000, Loss:2.1476 Accuracy: 0.3870, VQA Accuracy: 0.3870Processed 4608 of 50000, Loss:2.1175 Accuracy: 0.3900, VQA Accuracy: 0.3900Processed 5000 of 50000, Loss:2.1128 Accuracy: 0.3912, VQA Accuracy: 0.3912Epoch 3, Accuracy: 0.3912
+Epoch 3, VQA Accuracy: 0.3912
+
+Processed 512 of 50000, Loss:1.9324 Accuracy: 0.4004, VQA Accuracy: 0.4004Processed 1024 of 50000, Loss:2.0118 Accuracy: 0.3965, VQA Accuracy: 0.3965Processed 1536 of 50000, Loss:1.9582 Accuracy: 0.3991, VQA Accuracy: 0.3991Processed 2048 of 50000, Loss:1.9252 Accuracy: 0.4053, VQA Accuracy: 0.4053Processed 2560 of 50000, Loss:1.9346 Accuracy: 0.4074, VQA Accuracy: 0.4074Processed 3072 of 50000, Loss:1.9139 Accuracy: 0.4121, VQA Accuracy: 0.4121Processed 3584 of 50000, Loss:1.9232 Accuracy: 0.4102, VQA Accuracy: 0.4102Processed 4096 of 50000, Loss:1.9257 Accuracy: 0.4077, VQA Accuracy: 0.4077Processed 4608 of 50000, Loss:1.9240 Accuracy: 0.4082, VQA Accuracy: 0.4082Processed 5000 of 50000, Loss:1.9106 Accuracy: 0.4092, VQA Accuracy: 0.4092Epoch 4, Accuracy: 0.4092
+Epoch 4, VQA Accuracy: 0.4092
+
+Processed 512 of 50000, Loss:1.7227 Accuracy: 0.4492, VQA Accuracy: 0.4492Processed 1024 of 50000, Loss:1.8126 Accuracy: 0.4316, VQA Accuracy: 0.4316Processed 1536 of 50000, Loss:1.8130 Accuracy: 0.4154, VQA Accuracy: 0.4154Processed 2048 of 50000, Loss:1.8377 Accuracy: 0.4131, VQA Accuracy: 0.4131Processed 2560 of 50000, Loss:1.8187 Accuracy: 0.4227, VQA Accuracy: 0.4227Processed 3072 of 50000, Loss:1.8052 Accuracy: 0.4287, VQA Accuracy: 0.4287Processed 3584 of 50000, Loss:1.8092 Accuracy: 0.4269, VQA Accuracy: 0.4269Processed 4096 of 50000, Loss:1.8024 Accuracy: 0.4280, VQA Accuracy: 0.4280Processed 4608 of 50000, Loss:1.7969 Accuracy: 0.4284, VQA Accuracy: 0.4284Processed 5000 of 50000, Loss:1.7936 Accuracy: 0.4288, VQA Accuracy: 0.4288Epoch 5, Accuracy: 0.4288
+Epoch 5, VQA Accuracy: 0.4288
+
+Processed 512 of 50000, Loss:1.8324 Accuracy: 0.4082, VQA Accuracy: 0.4082Processed 1024 of 50000, Loss:1.7840 Accuracy: 0.4258, VQA Accuracy: 0.4258Processed 1536 of 50000, Loss:1.7445 Accuracy: 0.4342, VQA Accuracy: 0.4342Processed 2048 of 50000, Loss:1.7780 Accuracy: 0.4316, VQA Accuracy: 0.4316Processed 2560 of 50000, Loss:1.7468 Accuracy: 0.4383, VQA Accuracy: 0.4383Processed 3072 of 50000, Loss:1.7233 Accuracy: 0.4453, VQA Accuracy: 0.4453Processed 3584 of 50000, Loss:1.6997 Accuracy: 0.4517, VQA Accuracy: 0.4517Processed 4096 of 50000, Loss:1.6902 Accuracy: 0.4480, VQA Accuracy: 0.4480Processed 4608 of 50000, Loss:1.6848 Accuracy: 0.4475, VQA Accuracy: 0.4475Processed 5000 of 50000, Loss:1.6838 Accuracy: 0.4494, VQA Accuracy: 0.4494Epoch 6, Accuracy: 0.4494
+Epoch 6, VQA Accuracy: 0.4494
+
+Processed 512 of 50000, Loss:1.6359 Accuracy: 0.4570, VQA Accuracy: 0.4570Processed 1024 of 50000, Loss:1.6709 Accuracy: 0.4600, VQA Accuracy: 0.4600Processed 1536 of 50000, Loss:1.6493 Accuracy: 0.4772, VQA Accuracy: 0.4772Processed 2048 of 50000, Loss:1.6250 Accuracy: 0.4775, VQA Accuracy: 0.4775Processed 2560 of 50000, Loss:1.6212 Accuracy: 0.4719, VQA Accuracy: 0.4719Processed 3072 of 50000, Loss:1.6168 Accuracy: 0.4723, VQA Accuracy: 0.4723Processed 3584 of 50000, Loss:1.6029 Accuracy: 0.4718, VQA Accuracy: 0.4718Processed 4096 of 50000, Loss:1.5964 Accuracy: 0.4734, VQA Accuracy: 0.4734Processed 4608 of 50000, Loss:1.5853 Accuracy: 0.4733, VQA Accuracy: 0.4733Processed 5000 of 50000, Loss:1.5842 Accuracy: 0.4730, VQA Accuracy: 0.4730Epoch 7, Accuracy: 0.473
+Epoch 7, VQA Accuracy: 0.473
+
+Processed 512 of 50000, Loss:1.4749 Accuracy: 0.5000, VQA Accuracy: 0.5000Processed 1024 of 50000, Loss:1.5518 Accuracy: 0.4688, VQA Accuracy: 0.4688Processed 1536 of 50000, Loss:1.5258 Accuracy: 0.4831, VQA Accuracy: 0.4831Processed 2048 of 50000, Loss:1.5092 Accuracy: 0.4873, VQA Accuracy: 0.4873Processed 2560 of 50000, Loss:1.4935 Accuracy: 0.4859, VQA Accuracy: 0.4859Processed 3072 of 50000, Loss:1.4971 Accuracy: 0.4867, VQA Accuracy: 0.4867Processed 3584 of 50000, Loss:1.4924 Accuracy: 0.4810, VQA Accuracy: 0.4810Processed 4096 of 50000, Loss:1.4839 Accuracy: 0.4807, VQA Accuracy: 0.4807Processed 4608 of 50000, Loss:1.4872 Accuracy: 0.4787, VQA Accuracy: 0.4787Processed 5000 of 50000, Loss:1.4791 Accuracy: 0.4814, VQA Accuracy: 0.4814Epoch 8, Accuracy: 0.4814
+Epoch 8, VQA Accuracy: 0.4814
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py:71: H5pyDeprecationWarning: The default file mode will change to 'r' (read-only) in h5py 3.0. To suppress this warning, pass the mode you need to h5py.File(), or set the global default h5.get_config().default_file_mode, or set the environment variable H5PY_DEFAULT_READONLY=1. Available modes are: 'r', 'r+', 'w', 'w-'/'x', 'a'. See the docs for details.
+  gt_answers = h5py.File(path_)['aidx'][:]
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 486, in <module>
+    main()
+  File "vqa_trainer.py", line 481, in main
+    train_base_init(config, net, train_data, val_data, optimizer, criterion, args.expt_name, net_running)
+  File "vqa_trainer.py", line 127, in train_base_init
+    training_loop(config, net, base_init_data_loader, val_data, optimizer, criterion, expt_name, net_running)
+  File "vqa_trainer.py", line 103, in training_loop
+    acc, vqa_acc = predict(eval_net, val_data, epoch, config.expt_dir, config)
+  File "vqa_trainer.py", line 345, in predict
+    compute_accuracy(config.data_path, config.dataset, results)
+  File "/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py", line 106, in compute_accuracy
+    mpt, overall = compute_tdiuc_accuracy(path, preds)
+  File "/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py", line 71, in compute_tdiuc_accuracy
+    gt_answers = h5py.File(path_)['aidx'][:]
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/home/qzhb/anaconda3/envs/torch/lib/python3.7/site-packages/h5py/_hl/group.py", line 264, in __getitem__
+    oid = h5o.open(self.id, self._e(name), lapl=self._lapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5o.pyx", line 190, in h5py.h5o.open
+KeyError: "Unable to open object (object 'aidx' doesn't exist)"
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Namespace(buffer_replacement_strategy='random', config_name='TDIUC_streaming', data_order='iid', expt_name='TDIUC_streaming_iid_2e-3', full=False, lr=0.002, max_buffer_size=None, only_qtype=-1, rehearsal_mode=None, resume_from=None, stream=False, stream_with_rehearsal=True, use_exponential_averaging=False)
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+Loading Test Data
+Filtering Test Data
+UpDown(
+  (ques_encoder): QuestionEncoder(
+    (embedding): WordEmbedding(
+      (emb): Embedding(9319, 300)
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (lstm): LSTM(300, 512, bidirectional=True)
+  )
+  (attention): ModuleList(
+    (0): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (classifier): Classifier(
+    (relu): ReLU(inplace=True)
+    (lin1): Linear(in_features=5120, out_features=2048, bias=True)
+    (classifier): Linear(in_features=2048, out_features=1480, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
+Training...
+Using lr specified in args 0.002
+{
+    "buffer_replacement_strategy": "random",
+    "config_name": "TDIUC_streaming",
+    "data_order": "iid",
+    "expt_name": "TDIUC_streaming_iid_2e-3",
+    "full": false,
+    "lr": 0.002,
+    "max_buffer_size": null,
+    "only_qtype": -1,
+    "rehearsal_mode": null,
+    "resume_from": null,
+    "stream": false,
+    "stream_with_rehearsal": true,
+    "use_exponential_averaging": false
+}
+
+Performing base init on 5000 data points
+Processed 512 of 50000, Loss:7.2998 Accuracy: 0.0000, VQA Accuracy: 0.0000Processed 1024 of 50000, Loss:6.6666 Accuracy: 0.1455, VQA Accuracy: 0.1455Processed 1536 of 50000, Loss:5.7273 Accuracy: 0.1901, VQA Accuracy: 0.1901Processed 2048 of 50000, Loss:5.3825 Accuracy: 0.2100, VQA Accuracy: 0.2100Processed 2560 of 50000, Loss:5.0466 Accuracy: 0.2301, VQA Accuracy: 0.2301Processed 3072 of 50000, Loss:4.7619 Accuracy: 0.2370, VQA Accuracy: 0.2370Processed 3584 of 50000, Loss:4.5488 Accuracy: 0.2405, VQA Accuracy: 0.2405Processed 4096 of 50000, Loss:4.3836 Accuracy: 0.2510, VQA Accuracy: 0.2510Processed 4608 of 50000, Loss:4.2486 Accuracy: 0.2637, VQA Accuracy: 0.2637Processed 5000 of 50000, Loss:4.1521 Accuracy: 0.2690, VQA Accuracy: 0.2690Epoch 1, Accuracy: 0.269
+Epoch 1, VQA Accuracy: 0.269
+
+Processed 512 of 50000, Loss:2.8873 Accuracy: 0.3438, VQA Accuracy: 0.3438Processed 1024 of 50000, Loss:2.7338 Accuracy: 0.3428, VQA Accuracy: 0.3428Processed 1536 of 50000, Loss:2.7105 Accuracy: 0.3477, VQA Accuracy: 0.3477Processed 2048 of 50000, Loss:2.6570 Accuracy: 0.3511, VQA Accuracy: 0.3511Processed 2560 of 50000, Loss:2.6340 Accuracy: 0.3543, VQA Accuracy: 0.3543Processed 3072 of 50000, Loss:2.6174 Accuracy: 0.3529, VQA Accuracy: 0.3529Processed 3584 of 50000, Loss:2.5859 Accuracy: 0.3518, VQA Accuracy: 0.3518Processed 4096 of 50000, Loss:2.5549 Accuracy: 0.3513, VQA Accuracy: 0.3513Processed 4608 of 50000, Loss:2.5176 Accuracy: 0.3568, VQA Accuracy: 0.3568Processed 5000 of 50000, Loss:2.4929 Accuracy: 0.3618, VQA Accuracy: 0.3618Epoch 2, Accuracy: 0.3618
+Epoch 2, VQA Accuracy: 0.3618
+
+Processed 512 of 50000, Loss:2.2112 Accuracy: 0.3750, VQA Accuracy: 0.3750Processed 1024 of 50000, Loss:2.2719 Accuracy: 0.3691, VQA Accuracy: 0.3691Processed 1536 of 50000, Loss:2.2506 Accuracy: 0.3730, VQA Accuracy: 0.3730Processed 2048 of 50000, Loss:2.2010 Accuracy: 0.3877, VQA Accuracy: 0.3877Processed 2560 of 50000, Loss:2.1859 Accuracy: 0.3883, VQA Accuracy: 0.3883Processed 3072 of 50000, Loss:2.1424 Accuracy: 0.3906, VQA Accuracy: 0.3906Processed 3584 of 50000, Loss:2.1480 Accuracy: 0.3892, VQA Accuracy: 0.3892Processed 4096 of 50000, Loss:2.1324 Accuracy: 0.3879, VQA Accuracy: 0.3879Processed 4608 of 50000, Loss:2.1201 Accuracy: 0.3889, VQA Accuracy: 0.3889Processed 5000 of 50000, Loss:2.1123 Accuracy: 0.3898, VQA Accuracy: 0.3898Epoch 3, Accuracy: 0.3898
+Epoch 3, VQA Accuracy: 0.3898
+
+Processed 512 of 50000, Loss:2.1017 Accuracy: 0.3633, VQA Accuracy: 0.3633Processed 1024 of 50000, Loss:2.0200 Accuracy: 0.3877, VQA Accuracy: 0.3877Processed 1536 of 50000, Loss:1.9940 Accuracy: 0.3880, VQA Accuracy: 0.3880Processed 2048 of 50000, Loss:1.9586 Accuracy: 0.3921, VQA Accuracy: 0.3921Processed 2560 of 50000, Loss:1.9424 Accuracy: 0.3969, VQA Accuracy: 0.3969Processed 3072 of 50000, Loss:1.9250 Accuracy: 0.4004, VQA Accuracy: 0.4004Processed 3584 of 50000, Loss:1.9241 Accuracy: 0.4018, VQA Accuracy: 0.4018Processed 4096 of 50000, Loss:1.9244 Accuracy: 0.4060, VQA Accuracy: 0.4060Processed 4608 of 50000, Loss:1.9300 Accuracy: 0.4056, VQA Accuracy: 0.4056Processed 5000 of 50000, Loss:1.9259 Accuracy: 0.4096, VQA Accuracy: 0.4096Epoch 4, Accuracy: 0.4096
+Epoch 4, VQA Accuracy: 0.4096
+
+Processed 512 of 50000, Loss:1.8805 Accuracy: 0.4180, VQA Accuracy: 0.4180Processed 1024 of 50000, Loss:1.8485 Accuracy: 0.4375, VQA Accuracy: 0.4375Processed 1536 of 50000, Loss:1.8620 Accuracy: 0.4290, VQA Accuracy: 0.4290Processed 2048 of 50000, Loss:1.8583 Accuracy: 0.4272, VQA Accuracy: 0.4272Processed 2560 of 50000, Loss:1.8410 Accuracy: 0.4336, VQA Accuracy: 0.4336Processed 3072 of 50000, Loss:1.8453 Accuracy: 0.4339, VQA Accuracy: 0.4339Processed 3584 of 50000, Loss:1.8236 Accuracy: 0.4336, VQA Accuracy: 0.4336Processed 4096 of 50000, Loss:1.8132 Accuracy: 0.4329, VQA Accuracy: 0.4329Processed 4608 of 50000, Loss:1.8140 Accuracy: 0.4332, VQA Accuracy: 0.4332Processed 5000 of 50000, Loss:1.8027 Accuracy: 0.4342, VQA Accuracy: 0.4342Epoch 5, Accuracy: 0.4342
+Epoch 5, VQA Accuracy: 0.4342
+
+Processed 512 of 50000, Loss:1.7508 Accuracy: 0.3906, VQA Accuracy: 0.3906Processed 1024 of 50000, Loss:1.7065 Accuracy: 0.4287, VQA Accuracy: 0.4287Processed 1536 of 50000, Loss:1.6648 Accuracy: 0.4447, VQA Accuracy: 0.4447Processed 2048 of 50000, Loss:1.6781 Accuracy: 0.4395, VQA Accuracy: 0.4395Processed 2560 of 50000, Loss:1.7001 Accuracy: 0.4352, VQA Accuracy: 0.4352Processed 3072 of 50000, Loss:1.7120 Accuracy: 0.4365, VQA Accuracy: 0.4365Processed 3584 of 50000, Loss:1.7104 Accuracy: 0.4350, VQA Accuracy: 0.4350Processed 4096 of 50000, Loss:1.7144 Accuracy: 0.4351, VQA Accuracy: 0.4351Processed 4608 of 50000, Loss:1.7155 Accuracy: 0.4366, VQA Accuracy: 0.4366Processed 5000 of 50000, Loss:1.7116 Accuracy: 0.4394, VQA Accuracy: 0.4394Epoch 6, Accuracy: 0.4394
+Epoch 6, VQA Accuracy: 0.4394
+
+Processed 512 of 50000, Loss:1.6244 Accuracy: 0.4414, VQA Accuracy: 0.4414Processed 1024 of 50000, Loss:1.6268 Accuracy: 0.4473, VQA Accuracy: 0.4473Processed 1536 of 50000, Loss:1.6158 Accuracy: 0.4531, VQA Accuracy: 0.4531Processed 2048 of 50000, Loss:1.6211 Accuracy: 0.4536, VQA Accuracy: 0.4536Processed 2560 of 50000, Loss:1.6322 Accuracy: 0.4539, VQA Accuracy: 0.4539Processed 3072 of 50000, Loss:1.6358 Accuracy: 0.4518, VQA Accuracy: 0.4518Processed 3584 of 50000, Loss:1.6346 Accuracy: 0.4540, VQA Accuracy: 0.4540Processed 4096 of 50000, Loss:1.6271 Accuracy: 0.4575, VQA Accuracy: 0.4575Processed 4608 of 50000, Loss:1.6141 Accuracy: 0.4599, VQA Accuracy: 0.4599Processed 5000 of 50000, Loss:1.6123 Accuracy: 0.4620, VQA Accuracy: 0.4620Epoch 7, Accuracy: 0.462
+Epoch 7, VQA Accuracy: 0.462
+
+Processed 512 of 50000, Loss:1.6042 Accuracy: 0.4727, VQA Accuracy: 0.4727Processed 1024 of 50000, Loss:1.5435 Accuracy: 0.4678, VQA Accuracy: 0.4678Processed 1536 of 50000, Loss:1.5465 Accuracy: 0.4727, VQA Accuracy: 0.4727Processed 2048 of 50000, Loss:1.5302 Accuracy: 0.4751, VQA Accuracy: 0.4751Processed 2560 of 50000, Loss:1.5208 Accuracy: 0.4734, VQA Accuracy: 0.4734Processed 3072 of 50000, Loss:1.5145 Accuracy: 0.4746, VQA Accuracy: 0.4746Processed 3584 of 50000, Loss:1.5233 Accuracy: 0.4699, VQA Accuracy: 0.4699Processed 4096 of 50000, Loss:1.5202 Accuracy: 0.4702, VQA Accuracy: 0.4702Processed 4608 of 50000, Loss:1.5091 Accuracy: 0.4742, VQA Accuracy: 0.4742Processed 5000 of 50000, Loss:1.4993 Accuracy: 0.4746, VQA Accuracy: 0.4746Epoch 8, Accuracy: 0.4746
+Epoch 8, VQA Accuracy: 0.4746
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py:71: H5pyDeprecationWarning: The default file mode will change to 'r' (read-only) in h5py 3.0. To suppress this warning, pass the mode you need to h5py.File(), or set the global default h5.get_config().default_file_mode, or set the environment variable H5PY_DEFAULT_READONLY=1. Available modes are: 'r', 'r+', 'w', 'w-'/'x', 'a'. See the docs for details.
+  gt_answers = h5py.File(path_)['aidx'][:]
+/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py:72: H5pyDeprecationWarning: The default file mode will change to 'r' (read-only) in h5py 3.0. To suppress this warning, pass the mode you need to h5py.File(), or set the global default h5.get_config().default_file_mode, or set the environment variable H5PY_DEFAULT_READONLY=1. Available modes are: 'r', 'r+', 'w', 'w-'/'x', 'a'. See the docs for details.
+  gt_qids = h5py.File(path_)['qid'][:]
+/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py:73: H5pyDeprecationWarning: The default file mode will change to 'r' (read-only) in h5py 3.0. To suppress this warning, pass the mode you need to h5py.File(), or set the global default h5.get_config().default_file_mode, or set the environment variable H5PY_DEFAULT_READONLY=1. Available modes are: 'r', 'r+', 'w', 'w-'/'x', 'a'. See the docs for details.
+  gt_qtypes = h5py.File(path_)['qtypeidx'][:]
+Mean Per Type: 0.21333333333333335, Overall: 0.512
+
+
+Processed 512 of 50000, Loss:1.4298 Accuracy: 0.5098, VQA Accuracy: 0.5098Processed 1024 of 50000, Loss:1.4338 Accuracy: 0.4893, VQA Accuracy: 0.4893Processed 1536 of 50000, Loss:1.3995 Accuracy: 0.4961, VQA Accuracy: 0.4961Processed 2048 of 50000, Loss:1.3987 Accuracy: 0.4893, VQA Accuracy: 0.4893Processed 2560 of 50000, Loss:1.4057 Accuracy: 0.4902, VQA Accuracy: 0.4902Processed 3072 of 50000, Loss:1.4318 Accuracy: 0.4854, VQA Accuracy: 0.4854Processed 3584 of 50000, Loss:1.4150 Accuracy: 0.4869, VQA Accuracy: 0.4869Processed 4096 of 50000, Loss:1.4176 Accuracy: 0.4868, VQA Accuracy: 0.4868Processed 4608 of 50000, Loss:1.4057 Accuracy: 0.4894, VQA Accuracy: 0.4894Processed 5000 of 50000, Loss:1.4009 Accuracy: 0.4914, VQA Accuracy: 0.4914Epoch 9, Accuracy: 0.4914
+Epoch 9, VQA Accuracy: 0.4914
+
+Processed 512 of 50000, Loss:1.2553 Accuracy: 0.5410, VQA Accuracy: 0.5410Processed 1024 of 50000, Loss:1.3051 Accuracy: 0.5215, VQA Accuracy: 0.5215Processed 1536 of 50000, Loss:1.3077 Accuracy: 0.5150, VQA Accuracy: 0.5150Processed 2048 of 50000, Loss:1.3113 Accuracy: 0.5195, VQA Accuracy: 0.5195Processed 2560 of 50000, Loss:1.3068 Accuracy: 0.5242, VQA Accuracy: 0.5242Processed 3072 of 50000, Loss:1.3111 Accuracy: 0.5257, VQA Accuracy: 0.5257Processed 3584 of 50000, Loss:1.3002 Accuracy: 0.5321, VQA Accuracy: 0.5321Processed 4096 of 50000, Loss:1.2988 Accuracy: 0.5291, VQA Accuracy: 0.5291Processed 4608 of 50000, Loss:1.3033 Accuracy: 0.5258, VQA Accuracy: 0.5258Processed 5000 of 50000, Loss:1.3138 Accuracy: 0.5248, VQA Accuracy: 0.5248Epoch 10, Accuracy: 0.5248
+Epoch 10, VQA Accuracy: 0.5248
+
+Processed 512 of 50000, Loss:1.3417 Accuracy: 0.5332, VQA Accuracy: 0.5332Processed 1024 of 50000, Loss:1.3272 Accuracy: 0.5088, VQA Accuracy: 0.5088Processed 1536 of 50000, Loss:1.3357 Accuracy: 0.5143, VQA Accuracy: 0.5143Processed 2048 of 50000, Loss:1.3057 Accuracy: 0.5205, VQA Accuracy: 0.5205Processed 2560 of 50000, Loss:1.2874 Accuracy: 0.5293, VQA Accuracy: 0.5293Processed 3072 of 50000, Loss:1.2777 Accuracy: 0.5339, VQA Accuracy: 0.5339Processed 3584 of 50000, Loss:1.2771 Accuracy: 0.5335, VQA Accuracy: 0.5335Processed 4096 of 50000, Loss:1.2725 Accuracy: 0.5344, VQA Accuracy: 0.5344Processed 4608 of 50000, Loss:1.2725 Accuracy: 0.5345, VQA Accuracy: 0.5345Processed 5000 of 50000, Loss:1.2675 Accuracy: 0.5370, VQA Accuracy: 0.5370Epoch 11, Accuracy: 0.537
+Epoch 11, VQA Accuracy: 0.537
+
+Processed 512 of 50000, Loss:1.2976 Accuracy: 0.5000, VQA Accuracy: 0.5000Processed 1024 of 50000, Loss:1.2254 Accuracy: 0.5371, VQA Accuracy: 0.5371Processed 1536 of 50000, Loss:1.2386 Accuracy: 0.5449, VQA Accuracy: 0.5449Processed 2048 of 50000, Loss:1.2222 Accuracy: 0.5493, VQA Accuracy: 0.5493Processed 2560 of 50000, Loss:1.2238 Accuracy: 0.5465, VQA Accuracy: 0.5465Processed 3072 of 50000, Loss:1.2185 Accuracy: 0.5485, VQA Accuracy: 0.5485Processed 3584 of 50000, Loss:1.2139 Accuracy: 0.5505, VQA Accuracy: 0.5505Processed 4096 of 50000, Loss:1.2159 Accuracy: 0.5498, VQA Accuracy: 0.5498Processed 4608 of 50000, Loss:1.2282 Accuracy: 0.5482, VQA Accuracy: 0.5482Processed 5000 of 50000, Loss:1.2262 Accuracy: 0.5474, VQA Accuracy: 0.5474Epoch 12, Accuracy: 0.5474
+Epoch 12, VQA Accuracy: 0.5474
+
+Processed 512 of 50000, Loss:1.2858 Accuracy: 0.5449, VQA Accuracy: 0.5449Processed 1024 of 50000, Loss:1.2587 Accuracy: 0.5518, VQA Accuracy: 0.5518Processed 1536 of 50000, Loss:1.2263 Accuracy: 0.5547, VQA Accuracy: 0.5547Processed 2048 of 50000, Loss:1.2026 Accuracy: 0.5625, VQA Accuracy: 0.5625Processed 2560 of 50000, Loss:1.2001 Accuracy: 0.5637, VQA Accuracy: 0.5637Processed 3072 of 50000, Loss:1.1972 Accuracy: 0.5651, VQA Accuracy: 0.5651Processed 3584 of 50000, Loss:1.1850 Accuracy: 0.5689, VQA Accuracy: 0.5689Processed 4096 of 50000, Loss:1.1898 Accuracy: 0.5657, VQA Accuracy: 0.5657Processed 4608 of 50000, Loss:1.1919 Accuracy: 0.5614, VQA Accuracy: 0.5614Processed 5000 of 50000, Loss:1.1913 Accuracy: 0.5616, VQA Accuracy: 0.5616Epoch 13, Accuracy: 0.5616
+Epoch 13, VQA Accuracy: 0.5616
+
+Processed 512 of 50000, Loss:1.1419 Accuracy: 0.5898, VQA Accuracy: 0.5898Processed 1024 of 50000, Loss:1.1671 Accuracy: 0.5762, VQA Accuracy: 0.5762Processed 1536 of 50000, Loss:1.1575 Accuracy: 0.5710, VQA Accuracy: 0.5710Processed 2048 of 50000, Loss:1.1558 Accuracy: 0.5679, VQA Accuracy: 0.5679Processed 2560 of 50000, Loss:1.1594 Accuracy: 0.5648, VQA Accuracy: 0.5648Processed 3072 of 50000, Loss:1.1617 Accuracy: 0.5586, VQA Accuracy: 0.5586Processed 3584 of 50000, Loss:1.1637 Accuracy: 0.5586, VQA Accuracy: 0.5586Processed 4096 of 50000, Loss:1.1624 Accuracy: 0.5610, VQA Accuracy: 0.5610Processed 4608 of 50000, Loss:1.1609 Accuracy: 0.5642, VQA Accuracy: 0.5642Processed 5000 of 50000, Loss:1.1610 Accuracy: 0.5634, VQA Accuracy: 0.5634Epoch 14, Accuracy: 0.5634
+Epoch 14, VQA Accuracy: 0.5634
+
+Processed 512 of 50000, Loss:1.1921 Accuracy: 0.5820, VQA Accuracy: 0.5820Processed 1024 of 50000, Loss:1.1524 Accuracy: 0.5850, VQA Accuracy: 0.5850Processed 1536 of 50000, Loss:1.1357 Accuracy: 0.5898, VQA Accuracy: 0.5898Processed 2048 of 50000, Loss:1.1281 Accuracy: 0.5903, VQA Accuracy: 0.5903Processed 2560 of 50000, Loss:1.1225 Accuracy: 0.5910, VQA Accuracy: 0.5910Processed 3072 of 50000, Loss:1.1231 Accuracy: 0.5889, VQA Accuracy: 0.5889Processed 3584 of 50000, Loss:1.1129 Accuracy: 0.5918, VQA Accuracy: 0.5918Processed 4096 of 50000, Loss:1.1105 Accuracy: 0.5913, VQA Accuracy: 0.5913Processed 4608 of 50000, Loss:1.1152 Accuracy: 0.5916, VQA Accuracy: 0.5916Processed 5000 of 50000, Loss:1.1180 Accuracy: 0.5920, VQA Accuracy: 0.5920Epoch 15, Accuracy: 0.592
+Epoch 15, VQA Accuracy: 0.592
+
+Processed 512 of 50000, Loss:1.0360 Accuracy: 0.6309, VQA Accuracy: 0.6309Processed 1024 of 50000, Loss:1.0847 Accuracy: 0.6240, VQA Accuracy: 0.6240Processed 1536 of 50000, Loss:1.0725 Accuracy: 0.6185, VQA Accuracy: 0.6185Processed 2048 of 50000, Loss:1.0710 Accuracy: 0.6152, VQA Accuracy: 0.6152Processed 2560 of 50000, Loss:1.0664 Accuracy: 0.6125, VQA Accuracy: 0.6125Processed 3072 of 50000, Loss:1.0577 Accuracy: 0.6123, VQA Accuracy: 0.6123Processed 3584 of 50000, Loss:1.0718 Accuracy: 0.6085, VQA Accuracy: 0.6085Processed 4096 of 50000, Loss:1.0761 Accuracy: 0.6064, VQA Accuracy: 0.6064Processed 4608 of 50000, Loss:1.0703 Accuracy: 0.6098, VQA Accuracy: 0.6098Processed 5000 of 50000, Loss:1.0778 Accuracy: 0.6072, VQA Accuracy: 0.6072Epoch 16, Accuracy: 0.6072
+Epoch 16, VQA Accuracy: 0.6072
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.25233333333333335, Overall: 0.6056
+
+
+Processed 512 of 50000, Loss:1.1030 Accuracy: 0.5977, VQA Accuracy: 0.5977Processed 1024 of 50000, Loss:1.0554 Accuracy: 0.6064, VQA Accuracy: 0.6064Processed 1536 of 50000, Loss:1.0731 Accuracy: 0.6009, VQA Accuracy: 0.6009Processed 2048 of 50000, Loss:1.0733 Accuracy: 0.6016, VQA Accuracy: 0.6016Processed 2560 of 50000, Loss:1.0751 Accuracy: 0.6059, VQA Accuracy: 0.6059Processed 3072 of 50000, Loss:1.0796 Accuracy: 0.6012, VQA Accuracy: 0.6012Processed 3584 of 50000, Loss:1.0650 Accuracy: 0.6088, VQA Accuracy: 0.6088Processed 4096 of 50000, Loss:1.0628 Accuracy: 0.6118, VQA Accuracy: 0.6118Processed 4608 of 50000, Loss:1.0524 Accuracy: 0.6150, VQA Accuracy: 0.6150Processed 5000 of 50000, Loss:1.0545 Accuracy: 0.6118, VQA Accuracy: 0.6118Epoch 17, Accuracy: 0.6118
+Epoch 17, VQA Accuracy: 0.6118
+
+Processed 512 of 50000, Loss:1.0448 Accuracy: 0.6074, VQA Accuracy: 0.6074Processed 1024 of 50000, Loss:1.0027 Accuracy: 0.6357, VQA Accuracy: 0.6357Processed 1536 of 50000, Loss:1.0060 Accuracy: 0.6335, VQA Accuracy: 0.6335Processed 2048 of 50000, Loss:1.0195 Accuracy: 0.6270, VQA Accuracy: 0.6270Processed 2560 of 50000, Loss:1.0128 Accuracy: 0.6359, VQA Accuracy: 0.6359Processed 3072 of 50000, Loss:1.0299 Accuracy: 0.6273, VQA Accuracy: 0.6273Processed 3584 of 50000, Loss:1.0234 Accuracy: 0.6286, VQA Accuracy: 0.6286Processed 4096 of 50000, Loss:1.0234 Accuracy: 0.6243, VQA Accuracy: 0.6243Processed 4608 of 50000, Loss:1.0172 Accuracy: 0.6276, VQA Accuracy: 0.6276Processed 5000 of 50000, Loss:1.0224 Accuracy: 0.6270, VQA Accuracy: 0.6270Epoch 18, Accuracy: 0.627
+Epoch 18, VQA Accuracy: 0.627
+
+Processed 512 of 50000, Loss:0.9667 Accuracy: 0.6523, VQA Accuracy: 0.6523Processed 1024 of 50000, Loss:0.9732 Accuracy: 0.6328, VQA Accuracy: 0.6328Processed 1536 of 50000, Loss:0.9961 Accuracy: 0.6328, VQA Accuracy: 0.6328Processed 2048 of 50000, Loss:0.9961 Accuracy: 0.6338, VQA Accuracy: 0.6338Processed 2560 of 50000, Loss:0.9894 Accuracy: 0.6309, VQA Accuracy: 0.6309Processed 3072 of 50000, Loss:0.9916 Accuracy: 0.6312, VQA Accuracy: 0.6312Processed 3584 of 50000, Loss:1.0016 Accuracy: 0.6267, VQA Accuracy: 0.6267Processed 4096 of 50000, Loss:0.9951 Accuracy: 0.6328, VQA Accuracy: 0.6328Processed 4608 of 50000, Loss:0.9975 Accuracy: 0.6341, VQA Accuracy: 0.6341Processed 5000 of 50000, Loss:0.9919 Accuracy: 0.6350, VQA Accuracy: 0.6350Epoch 19, Accuracy: 0.635
+Epoch 19, VQA Accuracy: 0.635
+
+Processed 512 of 50000, Loss:0.9954 Accuracy: 0.6543, VQA Accuracy: 0.6543Processed 1024 of 50000, Loss:0.9744 Accuracy: 0.6475, VQA Accuracy: 0.6475Processed 1536 of 50000, Loss:0.9794 Accuracy: 0.6484, VQA Accuracy: 0.6484Processed 2048 of 50000, Loss:0.9574 Accuracy: 0.6572, VQA Accuracy: 0.6572Processed 2560 of 50000, Loss:0.9455 Accuracy: 0.6562, VQA Accuracy: 0.6562Processed 3072 of 50000, Loss:0.9607 Accuracy: 0.6520, VQA Accuracy: 0.6520Processed 3584 of 50000, Loss:0.9637 Accuracy: 0.6515, VQA Accuracy: 0.6515Processed 4096 of 50000, Loss:0.9665 Accuracy: 0.6470, VQA Accuracy: 0.6470Processed 4608 of 50000, Loss:0.9625 Accuracy: 0.6502, VQA Accuracy: 0.6502Processed 5000 of 50000, Loss:0.9628 Accuracy: 0.6504, VQA Accuracy: 0.6504Epoch 20, Accuracy: 0.6504
+Epoch 20, VQA Accuracy: 0.6504
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.262, Overall: 0.6288
+
+
+Base init completed!
+
+
+Streaming with rehearsal...
+ Network will evaluate at: [5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000]
+Processed 512 of 50176Processed 1024 of 50176Processed 1536 of 50176Processed 2048 of 50176Processed 2560 of 50176Processed 3072 of 50176Processed 3584 of 50176Processed 4096 of 50176Processed 4608 of 50176Processed 5120 of 50176Processed 5632 of 50176Processed 6144 of 50176Processed 6656 of 50176Processed 7168 of 50176Processed 7680 of 50176Processed 8192 of 50176Processed 8704 of 50176Processed 9216 of 50176Processed 9728 of 50176
+
+Boundary 10000 reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.30683333333333335, Overall: 0.7364
+
+
+Processed 10240 of 50176Processed 10752 of 50176Processed 11264 of 50176Processed 11776 of 50176Processed 12288 of 50176Processed 12800 of 50176Processed 13312 of 50176Processed 13824 of 50176Processed 14336 of 50176Processed 14848 of 50176
+
+Boundary 15000 reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.31516666666666665, Overall: 0.7564
+
+
+Processed 15360 of 50176Processed 15872 of 50176Processed 16384 of 50176Processed 16896 of 50176Processed 17408 of 50176Processed 17920 of 50176Processed 18432 of 50176Processed 18944 of 50176Processed 19456 of 50176Processed 19968 of 50176
+
+Boundary 20000 reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.3183333333333333, Overall: 0.764
+
+
+Processed 20480 of 50176Processed 20992 of 50176Processed 21504 of 50176Processed 22016 of 50176Processed 22528 of 50176Processed 23040 of 50176Processed 23552 of 50176Processed 24064 of 50176Processed 24576 of 50176
+
+Boundary 25000 reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.32116666666666666, Overall: 0.7708
+
+
+Processed 25088 of 50176Processed 25600 of 50176Processed 26112 of 50176Processed 26624 of 50176Processed 27136 of 50176Processed 27648 of 50176Processed 28160 of 50176Processed 28672 of 50176Processed 29184 of 50176Processed 29696 of 50176
+
+Boundary 30000 reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.32516666666666666, Overall: 0.7804
+
+
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 486, in <module>
+    main()
+  File "vqa_trainer.py", line 482, in main
+    stream(net, train_data, val_data, optimizer, criterion, config, net_running)
+  File "vqa_trainer.py", line 293, in stream
+    save(eval_net, optimizer, 'NA', config.expt_dir, suffix='boundary_{}'.format(iter_cnt))
+  File "vqa_trainer.py", line 138, in save
+    torch.save(data, curr_epoch_path)
+  File "/home/qzhb/anaconda3/envs/torch/lib/python3.7/site-packages/torch/serialization.py", line 260, in save
+    return _with_file_like(f, "wb", lambda f: _save(obj, f, pickle_module, pickle_protocol))
+  File "/home/qzhb/anaconda3/envs/torch/lib/python3.7/site-packages/torch/serialization.py", line 185, in _with_file_like
+    return body(f)
+  File "/home/qzhb/anaconda3/envs/torch/lib/python3.7/site-packages/torch/serialization.py", line 260, in <lambda>
+    return _with_file_like(f, "wb", lambda f: _save(obj, f, pickle_module, pickle_protocol))
+  File "/home/qzhb/anaconda3/envs/torch/lib/python3.7/site-packages/torch/serialization.py", line 338, in _save
+    serialized_storages[key]._write_file(f, _should_read_directly(f))
+RuntimeError: write(): fd 71 failed with No space left on device

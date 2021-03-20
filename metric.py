@@ -67,7 +67,7 @@ def compute_clevr_per_type_accuracies(path, preds):
 
 
 def compute_tdiuc_accuracy(PATH, preds):
-    path_ = f'{PATH}/val_1k_tdiuc.h5'
+    path_ = f'{PATH}/val_1w_tdiuc.h5'
     gt_answers = h5py.File(path_)['aidx'][:]
     gt_qids = h5py.File(path_)['qid'][:]
     gt_qtypes = h5py.File(path_)['qtypeidx'][:]
