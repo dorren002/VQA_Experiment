@@ -21,8 +21,8 @@ d = Dictionary.load_from_file(f'/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/d
 
 map_path = f'{data_path}/map_tdiuc_resnet.json'
 
-train_file = f'{data_path}/train_1k_{dataset}.h5'
-val_file = f'{data_path}/val_1k_{dataset}.h5'
+train_file = f'{data_path}/train_1w_{dataset}.h5'
+val_file = f'{data_path}/val_1w_{dataset}.h5'
   
 train_batch_size = 512
 val_batch_size = 512

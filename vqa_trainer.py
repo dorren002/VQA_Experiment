@@ -29,6 +29,7 @@ parser.add_argument('--rehearsal_mode', type=str, choices=['default', 'limited_b
 parser.add_argument('--max_buffer_size', type=int, default=None)
 parser.add_argument('--buffer_replacement_strategy', type=str, choices=['queue', 'random'], default='random')
 parser.add_argument('--lr', type=float, default=None)
+parser.add_argument('--only_qtype', type=int, default=None)
 parser.add_argument('--use_exponential_averaging', action='store_true')
 
 # parser.add_argument('--num_base_init_samples', type=int, default=None) # 69998
@@ -430,10 +431,8 @@ def main():
             config.only_first_k["train"] = i + 1
 
         print('Building Dataloaders')
-        if not args.only_qtype:
-            train_data, val_data = build_dataloaders(config, mem_feat)
-        else:
-            train_data, val_data = build_dataloaders(config, mem_feat, args.only_qtype)
+        
+        train_data, val_data = build_dataloaders(config, mem_feat, args.only_qtype)
         net = config.use_model(config)
         net_running = None
         # 没有

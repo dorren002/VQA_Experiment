@@ -58,7 +58,7 @@ def format_data(h5file, config,
     return data
 
 
-# 只有一个qtype
+# 只有一个qtype  类型为int  qtypeidx
 def format_data_onlyq(h5file, config, q_type, data_subset=1.0):
     mem_feat = dict()
     for dset in h5file.keys():
@@ -71,7 +71,7 @@ def format_data_onlyq(h5file, config, q_type, data_subset=1.0):
 
     data = []
     for d in mem_feat:
-        if d['aidx'] == num_classes:
+        if d['qtypeidx'] == q_type:
             data.append(d)
     return data
 
@@ -205,7 +205,7 @@ def collate_batch(data_batch):
 
 
 # %%
-def build_dataloaders(config, preloaded_feat, q_type_only = None, **kwargs):
+def build_dataloaders(config, preloaded_feat, q_type_only , **kwargs):
     # Make val dataset, change arrangment and num_classes in config
     print('Loading Train Data')
     train_h5file = h5py.File(config.train_file, 'r')
@@ -215,7 +215,8 @@ def build_dataloaders(config, preloaded_feat, q_type_only = None, **kwargs):
         nc = config.num_classes
     else:
         nc = sys.maxsize
-    if q_type_only==None:
+
+    if q_type_only == None:
         train_data = format_data(train_h5file, config, num_classes=nc, arrangement=config.arrangement['train'],
                              data_subset=config.data_subset)
     else:
@@ -239,7 +240,7 @@ def build_dataloaders(config, preloaded_feat, q_type_only = None, **kwargs):
     if  q_type_only==None:
         val_data = format_data(val_h5file, config, num_classes=nc, arrangement=config.arrangement['val'], data_subset=1.0)
     else:
-        val_data = format_data_onlyq(val_h5_file, config, qtype)
+        val_data = format_data_onlyq(val_h5_file, config, q_type_only)
     val_dataset = VQADataset(val_data, config, 'val', preloaded_feat)
 
     if config.fetch_all:
