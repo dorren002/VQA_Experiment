@@ -101,7 +101,7 @@ def training_loop(config, net, train_data, val_data, optimizer, criterion, expt_
 
         if epoch % config.test_interval == 0:
             acc, vqa_acc = predict(eval_net, val_data, epoch, config.expt_dir, config)
-            save(net, optimizer, epoch, config.expt_dir, suffix="epoch_" + str(epoch))
+            # save(net, optimizer, epoch, config.expt_dir, suffix="epoch_" + str(epoch))
 
     acc, vqa_acc = predict(eval_net, val_data, epoch, config.expt_dir, config)
     save(eval_net, optimizer, epoch, config.expt_dir, suffix="epoch_" + str(epoch))
@@ -231,7 +231,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                 if iter_cnt in boundaries:
                     print('{} Boundary reached, evaluating...'.format(iter_cnt))
                     predict(eval_net, test_data, 'NA', config.expt_dir, config, iter_cnt)
-                    save(eval_net, optimizer, 'NA', config.expt_dir, suffix='boundary_{}'.format(iter_cnt))
+              #      save(eval_net, optimizer, 'NA', config.expt_dir, suffix='boundary_{}'.format(iter_cnt))
                     net.train()
 
             inline_print('Processed {0} of {1}'.format(iter_cnt, len(data) * data.batch_size))
@@ -290,7 +290,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                 if iter_cnt in boundaries:
                     print('\n\nBoundary {} reached, evaluating...'.format(iter_cnt))
                     predict(eval_net, test_data, 'NA', config.expt_dir, config, iter_cnt)
-                    save(eval_net, optimizer, 'NA', config.expt_dir, suffix='boundary_{}'.format(iter_cnt))
+                #    save(eval_net, optimizer, 'NA', config.expt_dir, suffix='boundary_{}'.format(iter_cnt))
                     net.train()
                 index += 1
             inline_print('Processed {0} of {1}'.format(iter_cnt, len(data) * data.batch_size))
