@@ -216,7 +216,7 @@ def build_dataloaders(config, preloaded_feat, q_type_only , **kwargs):
     else:
         nc = sys.maxsize
 
-    if q_type_only == None:
+    if q_type_only < 0:
         train_data = format_data(train_h5file, config, num_classes=nc, arrangement=config.arrangement['train'],
                              data_subset=config.data_subset)
     else:
@@ -237,7 +237,7 @@ def build_dataloaders(config, preloaded_feat, q_type_only , **kwargs):
         nc = config.num_classes
     else:
         nc = sys.maxsize
-    if  q_type_only==None:
+    if  q_type_only < 0:
         val_data = format_data(val_h5file, config, num_classes=nc, arrangement=config.arrangement['val'], data_subset=1.0)
     else:
         val_data = format_data_onlyq(val_h5_file, config, q_type_only)

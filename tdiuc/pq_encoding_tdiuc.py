@@ -9,7 +9,7 @@ import json
 print("Starting the encoding process...")
 # Change these based on data set
 PATH = '/home/qzhb/dorren/CL4VQA/TDIUC'  # Change this
-streaming_type = 'qtype'  # Change this
+streaming_type = 'iid'  # Change this
 
 # Probably don't need to be changed
 feat_name = f'{PATH}/all_tdiuc_resnet'

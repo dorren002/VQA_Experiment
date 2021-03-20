@@ -14,7 +14,7 @@ from vqa_models import WordEmbedding
 # Data
 data_path = '/home/qzhb/dorren/CL4VQA/TDIUC/'
 dataset = 'tdiuc'
-img_feat = 'resnetpq_iid'  # updn, resnet, updnmkii, resnetmkii
+img_feat = 'resnetpq_qtype'  # updn, resnet, updnmkii, resnetmkii
 mkii = False  # If you want to also load codebook indices
 data_subset = 1.0
 d = Dictionary.load_from_file(f'/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_{dataset}.pkl')
