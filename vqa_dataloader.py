@@ -49,14 +49,14 @@ def format_data(h5file, config,
 
     mem_feat = mem_feat[:int(len(mem_feat) * data_subset)] # cut
 
-    print(len(mem_feat))
+    print(f"here is dataloader, before num_class: {len(mem_feat)} ")
 
     data = []
     for d in mem_feat:
         if d['aidx'] < num_classes:
             data.append(d)
 
-    print(len(data))
+    print(f"here is dataloader, after num_class: {len(data)} ")
 
     # iid    {'train': 'random', 'val': 'random'}
     # else   {'train': 'qtypeidx', 'val': 'qtypeidx'}

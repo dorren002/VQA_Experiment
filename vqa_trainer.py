@@ -427,7 +427,7 @@ def main():
             r = [10 * config.data_subset - 1]  # 9
         else:
             r = [config.only_first_k["train"] - 1]
-    r=[0]
+            
     for i in r:
         if config.arrangement['train'] == 'random':
             config.data_subset = (i + 1) / 10  # 0.1
