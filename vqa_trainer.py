@@ -95,10 +95,12 @@ def merge_data(Qs, Im, Ql, Ai, Qs_r, Im_r, Ql_r, Ai_r):
 
 def training_loop(config, net, train_data, val_data, optimizer, criterion, expt_name, net_running, start_epoch=0):
     eval_net = net_running if config.use_exponential_averaging else net
+
     for epoch in range(start_epoch, config.max_epochs):
         epoch = epoch + 1  # human readable
         acc, vqa_acc = train_epoch(net, criterion, optimizer, train_data, epoch, net_running)
-
+        
+        #   8
         if epoch % config.test_interval == 0:
             acc, vqa_acc = predict(eval_net, val_data, epoch, config.expt_dir, config)
             # save(net, optimizer, epoch, config.expt_dir, suffix="epoch_" + str(epoch))
@@ -357,6 +359,7 @@ def get_boundaries(train_data, config):
     # return [20, 40, 60, 100]
     data = train_data.dataset.data
     num_pts = len(data)
+    print(f"here is get boundaries , num_pts : {num_pts}")
     boundaries = []
     # qtype
     if config.arrangement['train'] != 'random':
@@ -405,34 +408,37 @@ def main():
         log.writerow(['Num_classes', 'Data_subset', 'Epoch', 'Acc', 'VQAAcc'])
 
     mem_feat = dict()
+    
+    # false
     if config.load_in_memory:
         print('Loading Data in Memory')
         feat_file = h5py.File(config.feat_path, 'r')
         for dset in feat_file.keys():
             mem_feat[dset] = feat_file[dset][:]
 
+    # 目前没有
     if args.full:
         if config.arrangement['train'] == 'random':
             r = range(10)
         elif config.dataset == 'tdiuc':
-            r = range(12)  # TDIUC has 12 question types
-        elif config.dataset == 'clevr':
-            r = range(5)  # CLEVR has 5 question types
+            r = range(5)  # TDIUC has 12 question types   ！！！！！！！！
     else:
         if config.arrangement['train'] == 'random':
-            r = [10 * config.data_subset - 1]
+            r = [10 * config.data_subset - 1]  # 9
         else:
             r = [config.only_first_k["train"] - 1]
-
+    r=1
     for i in r:
         if config.arrangement['train'] == 'random':
-            config.data_subset = (i + 1) / 10
+            config.data_subset = (i + 1) / 10  # 0.1
         else:
             config.only_first_k["train"] = i + 1
 
         print('Building Dataloaders')
         
         train_data, val_data = build_dataloaders(config, mem_feat, args.only_qtype)
+        temp = len(train_data)
+        print(f"here is main len of train_data: {temp}")
         net = config.use_model(config)
         net_running = None
         # 没有
@@ -476,7 +482,7 @@ def main():
         if not args.stream and not args.stream_with_rehearsal:
             training_loop(config, net, train_data, val_data, optimizer, criterion, config.expt_dir, start_epoch,
                           net_running)
-        # 又进行了一次切片且只训练了切片部分
+        # 又进行了一次切片 
         elif config.max_epochs > 0:
             train_base_init(config, net, train_data, val_data, optimizer, criterion, args.expt_name, net_running)
         stream(net, train_data, val_data, optimizer, criterion, config, net_running)

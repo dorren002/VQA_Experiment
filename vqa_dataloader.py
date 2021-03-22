@@ -14,6 +14,7 @@ from torch.utils.data import Dataset, DataLoader
 from data_utils import RehearsalBatchSampler, FixedBufferRehearsalBatchSampler
 from torch.utils.data.sampler import SubsetRandomSampler
 
+# 按问题排列[{q1},{q2}]
 def dictoflists2listofdicts(dictoflists):
     listofdicts = []
     for i in range(len(dictoflists['qid'])):
@@ -23,7 +24,7 @@ def dictoflists2listofdicts(dictoflists):
         listofdicts.append(ent)
     return listofdicts
 
-# h5py文件到符合训练的数据结构
+# 构造以问题为单位的列表
 def format_data(h5file, config,
                 num_classes,
                 arrangement='random',
@@ -37,6 +38,8 @@ def format_data(h5file, config,
     """
     mem_feat = dict()
     for dset in h5file.keys():
+
+        # 使用lstm的情况下前面提取的glove没有用
         if config.use_lstm and dset == 'qfeat':
             mem_feat[dset] = [0] * len(h5file['qid']) # n个0
         else:
@@ -44,13 +47,19 @@ def format_data(h5file, config,
 
     mem_feat = dictoflists2listofdicts(mem_feat)
 
-    mem_feat = mem_feat[:int(len(mem_feat) * data_subset)]
+    mem_feat = mem_feat[:int(len(mem_feat) * data_subset)] # cut
+
+    print(len(mem_feat))
 
     data = []
     for d in mem_feat:
         if d['aidx'] < num_classes:
             data.append(d)
 
+    print(len(data))
+
+    # iid    {'train': 'random', 'val': 'random'}
+    # else   {'train': 'qtypeidx', 'val': 'qtypeidx'}
     if arrangement != 'random':
         data = sorted(data, key=lambda k: k[arrangement])
     elif arrangement == 'random':
@@ -59,7 +68,7 @@ def format_data(h5file, config,
 
 
 # 只有一个qtype  类型为int  qtypeidx
-def format_data_onlyq(h5file, config, q_type, data_subset=1.0):
+def format_data_onlyq(h5file, config, q_type):
     mem_feat = dict()
     for dset in h5file.keys():
         if config.use_lstm and dset == 'qfeat':
@@ -83,7 +92,6 @@ def qid2fname(qid, split):
     return fname
 
 
-# 计算预测得分
 def build_target(ten_aidx, config):
     scores = torch.zeros((config.num_classes))
     ans_freq = Counter(ten_aidx)
@@ -210,12 +218,13 @@ def build_dataloaders(config, preloaded_feat, q_type_only , **kwargs):
     print('Loading Train Data')
     train_h5file = h5py.File(config.train_file, 'r')
     print('Filtering Train Data')
-    # full
+    # full 分类器的类别
     if config.train_on == 'valid':
         nc = config.num_classes
     else:
         nc = sys.maxsize
 
+    # 返回列表
     if q_type_only < 0:
         train_data = format_data(train_h5file, config, num_classes=nc, arrangement=config.arrangement['train'],
                              data_subset=config.data_subset)
