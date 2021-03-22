@@ -193,4 +193,111 @@ Testing...
 Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.297, Overall: 0.7128
 
 
-Processed 50000 of 50176
+Processed 50000 of 50176loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Namespace(buffer_replacement_strategy='random', config_name='TDIUC_streaming', data_order='iid', expt_name='TDIUC_streaming_iid_2e-3', full=False, lr=0.002, max_buffer_size=None, only_qtype=-1, rehearsal_mode=None, resume_from=None, stream=False, stream_with_rehearsal=True, use_exponential_averaging=False)
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 492, in <module>
+    main()
+  File "vqa_trainer.py", line 431, in main
+    for i in r:
+TypeError: 'int' object is not iterable
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Namespace(buffer_replacement_strategy='random', config_name='TDIUC_streaming', data_order='iid', expt_name='TDIUC_streaming_iid_2e-3', full=False, lr=0.002, max_buffer_size=None, only_qtype=-1, rehearsal_mode=None, resume_from=None, stream=False, stream_with_rehearsal=True, use_exponential_averaging=False)
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+5000
+5000
+Loading Test Data
+Filtering Test Data
+2500
+2500
+here is main len of train_data: 10
+UpDown(
+  (ques_encoder): QuestionEncoder(
+    (embedding): WordEmbedding(
+      (emb): Embedding(9319, 300)
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (lstm): LSTM(300, 512, bidirectional=True)
+  )
+  (attention): ModuleList(
+    (0): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (classifier): Classifier(
+    (relu): ReLU(inplace=True)
+    (lin1): Linear(in_features=5120, out_features=2048, bias=True)
+    (classifier): Linear(in_features=2048, out_features=1480, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
+Training...
+Using lr specified in args 0.002
+{
+    "buffer_replacement_strategy": "random",
+    "config_name": "TDIUC_streaming",
+    "data_order": "iid",
+    "expt_name": "TDIUC_streaming_iid_2e-3",
+    "full": false,
+    "lr": 0.002,
+    "max_buffer_size": null,
+    "only_qtype": -1,
+    "rehearsal_mode": null,
+    "resume_from": null,
+    "stream": false,
+    "stream_with_rehearsal": true,
+    "use_exponential_averaging": false
+}
+here is get boundaries , num_pts : 5000
+
+Performing base init on 500 data points
+Processed 500 of 5000, Loss:7.2946 Accuracy: 0.0000, VQA Accuracy: 0.0000Epoch 1, Accuracy: 0.0
+Epoch 1, VQA Accuracy: 0.0
+
+Processed 500 of 5000, Loss:5.5451 Accuracy: 0.4500, VQA Accuracy: 0.4500Epoch 2, Accuracy: 0.45
+Epoch 2, VQA Accuracy: 0.45
+
+Processed 500 of 5000, Loss:2.6442 Accuracy: 0.4080, VQA Accuracy: 0.4080Epoch 3, Accuracy: 0.408
+Epoch 3, VQA Accuracy: 0.408
+
+Processed 500 of 5000, Loss:2.5146 Accuracy: 0.3520, VQA Accuracy: 0.3520Epoch 4, Accuracy: 0.352
+Epoch 4, VQA Accuracy: 0.352
+
+Processed 500 of 5000, Loss:3.3799 Accuracy: 0.2660, VQA Accuracy: 0.2660Epoch 5, Accuracy: 0.266
+Epoch 5, VQA Accuracy: 0.266
+
+Processed 500 of 5000, Loss:2.6770 Accuracy: 0.2840, VQA Accuracy: 0.2840Epoch 6, Accuracy: 0.284
+Epoch 6, VQA Accuracy: 0.284
+
+Processed 500 of 5000, Loss:1.9663 Accuracy: 0.5360, VQA Accuracy: 0.5360Epoch 7, Accuracy: 0.536
+Epoch 7, VQA Accuracy: 0.536
+
+Processed 500 of 5000, Loss:1.8698 Accuracy: 0.4420, VQA Accuracy: 0.4420Epoch 8, Accuracy: 0.442
+Epoch 8, VQA Accuracy: 0.442
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Traceback (most recent call last):
+  File "vqa_trainer.py", line 492, in <module>
+    main()
+  File "vqa_trainer.py", line 487, in main
+    train_base_init(config, net, train_data, val_data, optimizer, criterion, args.expt_name, net_running)
+  File "vqa_trainer.py", line 129, in train_base_init
+    training_loop(config, net, base_init_data_loader, val_data, optimizer, criterion, expt_name, net_running)
+  File "vqa_trainer.py", line 105, in training_loop
+    acc, vqa_acc = predict(eval_net, val_data, epoch, config.expt_dir, config)
+  File "vqa_trainer.py", line 347, in predict
+    compute_accuracy(config.data_path, config.dataset, results)
+  File "/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py", line 38, in compute_accuracy
+    mpt, overall = compute_tdiuc_accuracy(path, preds)
+ValueError: too many values to unpack (expected 2)
