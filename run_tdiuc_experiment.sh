@@ -13,7 +13,7 @@ REHEARSAL=False
 CUDA_VISIBLE_DEVICES=0 nohup python -u vqa_trainer.py \
 --config_name ${CONFIG} \
 --expt_name ${expt} \
---stream_with_rehearsal ${REHEARSAL} \
+--stream_with_rehearsal \
 --data_order ${DATA_ORDER} \
 --only_qtype ${QTYPE} \
 --lr ${lr} &> ../logs/${expt}.log &
