@@ -29,28 +29,32 @@ class RehearsalBatchSampler(torch.utils.data.Sampler):
     """
 
     # See: https://github.com/pytorch/pytorch/issues/683
-    def __init__(self, rehearsal_ixs, num_rehearsal_samples):
+    def __init__(self, rehearsal_ixs, num_rehearsal_samples, sampling_strategy):
         # This makes sure that different workers have different randomness and don't end up returning the same data
         # item!
         self.rehearsal_ixs = rehearsal_ixs  # These are the samples which can be replayed. This list can grow over time.
 
         np.random.seed(os.getpid())
         self.num_rehearsal_samples = num_rehearsal_samples
+        self.sampling_strategy = sampling_strategy
 
     def __iter__(self):
         # We are returning a generator instead of an iterator, because the data points we want to sample from, differs
         # every time we loop through the data.
         # e.g., if we are seeing 100th sample, we may want to do a replay by sampling from 0-99 samples. But then,
         # when we see 101th sample, we want to replay from 0-100 samples instead of 0-99.
-        while True:
-            ix = randint(len(self.rehearsal_ixs), self.num_rehearsal_samples)
-            yield np.array([self.rehearsal_ixs[_curr_ix] for _curr_ix in ix])
+        if self.sampling_strategy == 'random':
+            while True:
+                ix = randint(len(self.rehearsal_ixs), self.num_rehearsal_samples)
+                yield np.array([self.rehearsal_ixs[_curr_ix] for _curr_ix in ix])
+        elif self.sampling_strategy == 'nearest_between_class':
+            while True:
 
     def __len__(self):
         return 2 ** 64  # Returning a very large number because we do not want it to stop replaying.
         # The stop criteria must be defined in some other manner.
 
-    def update_buffer(self, item_ix, class_id=None):
+    def update_buffer(self, item_ix, class_id=None, new_sample=None):
         self.rehearsal_ixs.append(item_ix)
 
     def get_state(self):
@@ -95,19 +99,25 @@ class FixedBufferRehearsalBatchSampler(torch.utils.data.Sampler):
                 max_class = c
         return max_class, max_num
 
-    def delete_sample_from_largest_class(self, args=None, train_data=None):
+    def find_nearest_sample(self, sample):
+
+
+    def delete_sample_from_largest_class(self, new_sample=None, args=None, train_data=None):
         max_class, max_num = self.find_class_having_max_samples()
         if self.buffer_replacement_strategy == 'random':
             del_ix = int(list(randint(max_num, 1))[0])
             del self.per_class_rehearsal_ixs[max_class][del_ix]
+        elif self.buffer_replacement_strategy == 'RWalk':
+            del_ix = find_nearest_sample_in_max_class(new_sample, max_class)
+
         self.class_lens[max_class] -= 1
         self.total_len -= 1
 
-    def update_buffer(self, new_ix, class_id, args=None, train_data=None):
+    def update_buffer(self, new_ix, class_id, new_sample=None, args=None, train_data=None):
         new_ix = int(new_ix)
         class_id = int(class_id)
         if self.total_len >= self.buffer_size:
-            self.delete_sample_from_largest_class(args, train_data)
+            self.delete_sample_from_largest_class(new_sample, args, train_data)
         if class_id not in self.per_class_rehearsal_ixs:
             self.per_class_rehearsal_ixs[class_id] = []
             self.class_lens[class_id] = 0
@@ -132,6 +142,7 @@ class FixedBufferRehearsalBatchSampler(torch.utils.data.Sampler):
                 return self.per_class_rehearsal_ixs[class_id][class_item_ix]
 
     def __iter__(self):
+
         while True:
             ixs = randint(self.total_len, self.num_rehearsal_samples)
             yield np.array([self.get_rehearsal_item_ix(ix) for ix in ixs])
