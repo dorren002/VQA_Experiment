@@ -204,8 +204,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
     index = 0
     boundaries = get_boundaries(data, config) # data即train_data
 
-    print(f"here is stream , length of data {len(data)}")
-
+    # n*512
     for qfeat, qseq, imfeat, qid, iid, aidx, ten_aidx, qlen in data:
         net.train()
         # print(torch.sum(net.embedding.emb.weight.data.flatten()))

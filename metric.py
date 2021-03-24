@@ -36,10 +36,10 @@ def compute_tdiuc_accuracy(PATH, preds):
 
 def compute_accuracy(path, dataset, preds):
     mpt, overall,acc = compute_tdiuc_accuracy(path, preds)
-    print(f"Mean Per Type: {mpt}, Overall: {overall}")
+    print(f"Mean Per Type: {mpt}, Overall: {overall}\n\n")
     for k in acc:
         if k==overall:
             pass
         else:
             tmp = sum(acc[k]) / len(acc[k])
-            print(f"Erroe on {k} : {tmp}")
+            print(f"acc on {k} : {tmp}")
