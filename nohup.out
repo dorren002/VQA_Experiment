@@ -301,3 +301,34 @@ Testing...
   File "/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/metric.py", line 38, in compute_accuracy
     mpt, overall = compute_tdiuc_accuracy(path, preds)
 ValueError: too many values to unpack (expected 2)
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+usage: vqa_trainer.py [-h] --config_name CONFIG_NAME --expt_name EXPT_NAME
+                      [--full] [--stream] [--data_order {iid,qtype}]
+                      [--stream_with_rehearsal]
+                      [--rehearsal_mode {default,limited_buffer}]
+                      [--max_buffer_size MAX_BUFFER_SIZE]
+                      [--buffer_replacement_strategy {queue,random}] [--lr LR]
+                      [--only_qtype ONLY_QTYPE] [--use_exponential_averaging]
+vqa_trainer.py: error: unrecognized arguments: False
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+usage: vqa_trainer.py [-h] --config_name CONFIG_NAME --expt_name EXPT_NAME
+                      [--full] [--stream] [--data_order {iid,qtype}]
+                      [--stream_with_rehearsal]
+                      [--rehearsal_mode {default,limited_buffer}]
+                      [--max_buffer_size MAX_BUFFER_SIZE]
+                      [--buffer_replacement_strategy {queue,random}] [--lr LR]
+                      [--only_qtype ONLY_QTYPE] [--use_exponential_averaging]
+vqa_trainer.py: error: unrecognized arguments: False
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Namespace(buffer_replacement_strategy='random', config_name='TDIUC_streaming', data_order=None, expt_name='TDIUC_streaming_iid_2e-3', full=False, lr=None, max_buffer_size=None, only_qtype=None, rehearsal_mode=None, resume_from=None, stream=False, stream_with_rehearsal=False, use_exponential_averaging=False)
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 492, in <module>
+    main()
+  File "vqa_trainer.py", line 439, in main
+    train_data, val_data = build_dataloaders(config, mem_feat, args.only_qtype)
+  File "/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/vqa_dataloader.py", line 228, in build_dataloaders
+    if q_type_only < 0:
+TypeError: '<' not supported between instances of 'NoneType' and 'int'
