@@ -204,6 +204,8 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
     index = 0
     boundaries = get_boundaries(data, config) # data即train_data
 
+    print(f"here is stream , length of data {len(data)}")
+
     for qfeat, qseq, imfeat, qid, iid, aidx, ten_aidx, qlen in data:
         net.train()
         # print(torch.sum(net.embedding.emb.weight.data.flatten()))
@@ -271,7 +273,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                 if index < boundaries[0]:
                     index += 1
                     continue
-
+                
                 # Start streaming after first boundary point 遇到boundary训练剩下的
                 rehearsal_data_iter = iter(rehearsal_data)
 
@@ -427,10 +429,10 @@ def main():
             r = [10 * config.data_subset - 1]  # 9
         else:
             r = [config.only_first_k["train"] - 1]
-            
+
     for i in r:
         if config.arrangement['train'] == 'random':
-            config.data_subset = (i + 1) / 10  # 0.1
+            config.data_subset = (i + 1) / 10  # 1
         else:
             config.only_first_k["train"] = i + 1
 
