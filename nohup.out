@@ -528,4 +528,23 @@ acc on 4 : 0.52
 acc on 3 : 0.666
 
 
-Processed 49999 of 50176
+Processed 49999 of 50176Error processing line 1 of /home/qzhb/anaconda3/lib/python3.7/site-packages/movienet-tools-nspkg.pth:
+
+  Traceback (most recent call last):
+    File "/home/qzhb/anaconda3/lib/python3.7/site.py", line 168, in addpackage
+      exec(line)
+    File "<string>", line 1, in <module>
+    File "<frozen importlib._bootstrap>", line 580, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Traceback (most recent call last):
+  File "vqa_trainer.py", line 15, in <module>
+    from vqa_dataloader import build_dataloaders, build_rehearsal_dataloader, build_base_init_dataloader, \
+  File "/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/vqa_dataloader.py", line 14, in <module>
+    from data_utils import RehearsalBatchSampler, FixedBufferRehearsalBatchSampler
+  File "/home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data_utils.py", line 53
+    def __len__(self):
+    ^
+IndentationError: expected an indented block
