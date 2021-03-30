@@ -15,7 +15,7 @@ BUFFERSIZE=10000
 CUDA_VISIBLE_DEVICES=0 nohup python -u vqa_trainer.py \
 --config_name ${CONFIG} \
 --expt_name ${expt} \
---stream_with_rehearsal \
+--stream \
 --data_order ${DATA_ORDER} \
 --rehearsal_mode ${MODE} \
 --max_buffer_size ${BUFFERSIZE} \
