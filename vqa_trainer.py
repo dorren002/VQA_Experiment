@@ -24,6 +24,7 @@ parser.add_argument('--full', action='store_true')
 parser.add_argument('--stream', action='store_true')  # known as "Fine-Tune" in the paper
 parser.add_argument('--data_order', type=str, choices=['iid', 'qtype'])  # known as "Fine-Tune" in the paper
 parser.add_argument('--stream_with_rehearsal', action='store_true')  # or REMIND
+parser.add_argument('--withPQ',action='store_true')
 
 parser.add_argument('--rehearsal_mode', type=str, choices=['default', 'limited_buffer'])
 parser.add_argument('--max_buffer_size', type=int, default=None)
@@ -390,7 +391,10 @@ def exponential_averaging(model1, model2, decay=0.999):
 
 # %%
 def main():
-    config.feat_path = f'{config.data_path}/all_tdiuc_resnetpq_{args.data_order}.h5'
+    if args.withPQ:
+        config.feat_path = f'{config.data_path}/all_tdiuc_resnetpq_{args.data_order}.h5'
+    else:
+        config.feat_path = f'{config.data_path}/all_tdiuc_resnet.h5'
     print(args)
     config.expt_dir = '../snapshots/' + args.expt_name
     config.use_exponential_averaging = args.use_exponential_averaging
@@ -483,7 +487,7 @@ def main():
         # 直接训练了
         if not args.stream and not args.stream_with_rehearsal:
             training_loop(config, net, train_data, val_data, optimizer, criterion, config.expt_dir, 
-                          net_running，start_epoch)
+                          net_running, start_epoch)
         # 又进行了一次切片 
         elif config.max_epochs > 0:
             train_base_init(config, net, train_data, val_data, optimizer, criterion, args.expt_name, net_running)
