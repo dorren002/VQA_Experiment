@@ -12,16 +12,15 @@ PATH = '/home/qzhb/dorren/CL4VQA/TDIUC'  # Change this
 streaming_type = 'iid'  # Change this
 
 # Probably don't need to be changed
-feat_name = f'{PATH}/all_tdiuc_resnet'
-train_filename = f'{PATH}/train_1w_tdiuc.h5'
-lut_name = f'{PATH}/map_tdiuc_resnet.json'
+feat_name = f'{PATH}/tdiuc_resnet_256'
+train_filename = f'{PATH}/tdiuc_256.h5'
+lut_name = f'{PATH}/map_tdiuc_resnet_256.json'
 
 feat_dim = 2048
-num_feat_maps = 49
+num_feat_maps = 49 
 
 train_data = h5py.File(train_filename, 'r')
 lut = json.load(open(lut_name))
-print(lut['image_id_to_ix']['172813'])
 feat_h5 = h5py.File(f'{feat_name}.h5', 'r')
 
 if streaming_type == 'iid':
@@ -50,7 +49,7 @@ print('Encoding, Decoding and saving Reconstructed Features')
 
 feats = feat_h5['image_features']
 start = 0
-batch = 10000
+batch = 10000 
 reconstructed_h5 = h5py.File(f'{feat_name}pq_{streaming_type}.h5', 'w')
 reconstructed_h5.create_dataset('image_features', shape=feats.shape, dtype=np.float32)
 
