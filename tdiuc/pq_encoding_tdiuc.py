@@ -21,7 +21,6 @@ num_feat_maps = 49
 
 train_data = h5py.File(train_filename, 'r')
 lut = json.load(open(lut_name))
-print(lut['image_id_to_ix']['172813'])
 feat_h5 = h5py.File(f'{feat_name}.h5', 'r')
 
 if streaming_type == 'iid':
@@ -59,6 +58,7 @@ while start < len(feats):
     data_batch = feats[start:start + batch]
     num_feats = len(data_batch)
     data_batch = np.reshape(data_batch, (-1, feat_dim))
+    # 经济的方法是存码本
     codes = pq.compute_codes(data_batch)
     data_batch_reconstructed = pq.decode(codes)
     data_batch_reconstructed = np.reshape(data_batch_reconstructed, (-1, num_feat_maps, feat_dim))
@@ -66,5 +66,3 @@ while start < len(feats):
     start = start + batch
 
 reconstructed_h5.close()
-
-# Boundary points: [21602, 463412, 575269, 821512, 840988, 903850, 905311, 905661, 950335, 976377, 982225, 1115299]

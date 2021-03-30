@@ -54,6 +54,7 @@ use_all = False
 use_pooled = False
 use_lstm = True
 
+
 # Training
 overwrite_expt_dir = True  # Set to True during dev phase
 max_epochs = 20
@@ -79,3 +80,4 @@ save_models = False
 if not soft_targets:
     train_on = 'valid'
 num_rehearsal_samples = 50
+buffer_replacement_strategy = 'random'

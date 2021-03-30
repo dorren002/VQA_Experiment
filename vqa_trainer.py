@@ -252,10 +252,11 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                                                                                     rehearsal_ixs,
                                                                                     config.num_rehearsal_samples,
                                                                                     args.max_buffer_size,
-                                                                                    args.buffer_replacement_strategy)
+                                                                                    config.buffer_replacement_strategy)
                 else:
                     rehearsal_data = build_rehearsal_dataloader(data.dataset, rehearsal_ixs,
-                                                                config.num_rehearsal_samples)
+                                                                config.num_rehearsal_samples,
+                                                                config.buffer_replacement_strategy)
             # 更新buffer，每个boundary训练一次
             for Q, Qs, Im, Qid, Iid, Ai, Tai, Ql in zip(qfeat, qseq, imfeat, qid, iid, aidx, ten_aidx, qlen):
                 iter_cnt += 1

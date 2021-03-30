@@ -19,6 +19,9 @@ def randint(max_val, num_samples):
             break
     return rand_vals.keys()
 
+# Same Image and Similar Question
+def SISQ():
+    pass
 
 class RehearsalBatchSampler(torch.utils.data.Sampler):
     """
@@ -47,9 +50,10 @@ class RehearsalBatchSampler(torch.utils.data.Sampler):
             while True:
                 ix = randint(len(self.rehearsal_ixs), self.num_rehearsal_samples)
                 yield np.array([self.rehearsal_ixs[_curr_ix] for _curr_ix in ix])
-        elif self.sampling_strategy == 'nearest_between_class':
+        # same image and similar question
+        elif self.sampling_strategy == 'SISQ':
             while True:
-
+                ix = SISQ(self.rehearsal_ixs, self.num_rehearsal_samples)
     def __len__(self):
         return 2 ** 64  # Returning a very large number because we do not want it to stop replaying.
         # The stop criteria must be defined in some other manner.
@@ -100,7 +104,7 @@ class FixedBufferRehearsalBatchSampler(torch.utils.data.Sampler):
         return max_class, max_num
 
     def find_nearest_sample(self, sample):
-
+        pass
 
     def delete_sample_from_largest_class(self, new_sample=None, args=None, train_data=None):
         max_class, max_num = self.find_class_having_max_samples()
