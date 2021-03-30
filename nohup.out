@@ -235,4 +235,302 @@ acc on 4 : 0.146
 acc on 3 : 0.872
 
 
+Processed 49999 of 50176Error processing line 1 of /home/qzhb/anaconda3/lib/python3.7/site-packages/movienet-tools-nspkg.pth:
+
+  Traceback (most recent call last):
+    File "/home/qzhb/anaconda3/lib/python3.7/site.py", line 168, in addpackage
+      exec(line)
+    File "<string>", line 1, in <module>
+    File "<frozen importlib._bootstrap>", line 580, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+loading dictionary from /home/qzhb/dorren/CL4VQA/REMIND/VQA_Experiment/data/dictionary_tdiuc.pkl
+Namespace(buffer_replacement_strategy='random', config_name='TDIUC_streaming', data_order='iid', expt_name='TDIUC_streaming_iid_2e-3', full=False, lr=0.002, max_buffer_size=10000, only_qtype=-1, rehearsal_mode='limited_buffer', resume_from=None, stream=True, stream_with_rehearsal=False, use_exponential_averaging=False)
+Building Dataloaders
+Loading Train Data
+Filtering Train Data
+Loading Test Data
+Filtering Test Data
+here is main len of train_data: 98
+UpDown(
+  (ques_encoder): QuestionEncoder(
+    (embedding): WordEmbedding(
+      (emb): Embedding(9319, 300)
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (lstm): LSTM(300, 512, bidirectional=True)
+  )
+  (attention): ModuleList(
+    (0): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (1): Attention(
+      (nlin): Linear(in_features=3072, out_features=1024, bias=True)
+      (attnmap): Linear(in_features=1024, out_features=1, bias=True)
+      (relu): ReLU()
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (classifier): Classifier(
+    (relu): ReLU(inplace=True)
+    (lin1): Linear(in_features=5120, out_features=2048, bias=True)
+    (classifier): Linear(in_features=2048, out_features=217, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
+Training...
+Using lr specified in args 0.002
+{
+    "buffer_replacement_strategy": "random",
+    "config_name": "TDIUC_streaming",
+    "data_order": "iid",
+    "expt_name": "TDIUC_streaming_iid_2e-3",
+    "full": false,
+    "lr": 0.002,
+    "max_buffer_size": 10000,
+    "only_qtype": -1,
+    "rehearsal_mode": "limited_buffer",
+    "resume_from": null,
+    "stream": true,
+    "stream_with_rehearsal": false,
+    "use_exponential_averaging": false
+}
+here is get boundaries , num_pts : 49999
+
+Performing base init on 4999 data points
+Processed 512 of 49999, Loss:5.3806 Accuracy: 0.0020, VQA Accuracy: 0.0020Processed 1024 of 49999, Loss:4.8431 Accuracy: 0.1094, VQA Accuracy: 0.1094Processed 1536 of 49999, Loss:4.3195 Accuracy: 0.1484, VQA Accuracy: 0.1484Processed 2048 of 49999, Loss:4.1506 Accuracy: 0.1704, VQA Accuracy: 0.1704Processed 2560 of 49999, Loss:3.9465 Accuracy: 0.2094, VQA Accuracy: 0.2094Processed 3072 of 49999, Loss:3.7781 Accuracy: 0.2334, VQA Accuracy: 0.2334Processed 3584 of 49999, Loss:3.6506 Accuracy: 0.2494, VQA Accuracy: 0.2494Processed 4096 of 49999, Loss:3.5404 Accuracy: 0.2600, VQA Accuracy: 0.2600Processed 4608 of 49999, Loss:3.4427 Accuracy: 0.2717, VQA Accuracy: 0.2717Processed 4999 of 49999, Loss:3.3769 Accuracy: 0.2753, VQA Accuracy: 0.2753Epoch 1, Accuracy: 0.27525505101020203
+Epoch 1, VQA Accuracy: 0.27525505101020203
+
+Processed 512 of 49999, Loss:2.2581 Accuracy: 0.3848, VQA Accuracy: 0.3848Processed 1024 of 49999, Loss:2.2885 Accuracy: 0.3730, VQA Accuracy: 0.3730Processed 1536 of 49999, Loss:2.3234 Accuracy: 0.3600, VQA Accuracy: 0.3600Processed 2048 of 49999, Loss:2.2831 Accuracy: 0.3721, VQA Accuracy: 0.3721Processed 2560 of 49999, Loss:2.2609 Accuracy: 0.3770, VQA Accuracy: 0.3770Processed 3072 of 49999, Loss:2.2735 Accuracy: 0.3757, VQA Accuracy: 0.3757Processed 3584 of 49999, Loss:2.2595 Accuracy: 0.3756, VQA Accuracy: 0.3756Processed 4096 of 49999, Loss:2.2299 Accuracy: 0.3792, VQA Accuracy: 0.3792Processed 4608 of 49999, Loss:2.2063 Accuracy: 0.3796, VQA Accuracy: 0.3796Processed 4999 of 49999, Loss:2.1874 Accuracy: 0.3801, VQA Accuracy: 0.3801Epoch 2, Accuracy: 0.38007601520304063
+Epoch 2, VQA Accuracy: 0.38007601520304063
+
+Processed 512 of 49999, Loss:1.8972 Accuracy: 0.4258, VQA Accuracy: 0.4258Processed 1024 of 49999, Loss:1.9370 Accuracy: 0.4082, VQA Accuracy: 0.4082Processed 1536 of 49999, Loss:1.9694 Accuracy: 0.3893, VQA Accuracy: 0.3893Processed 2048 of 49999, Loss:1.9460 Accuracy: 0.3892, VQA Accuracy: 0.3892Processed 2560 of 49999, Loss:1.9516 Accuracy: 0.3902, VQA Accuracy: 0.3902Processed 3072 of 49999, Loss:1.9251 Accuracy: 0.3981, VQA Accuracy: 0.3981Processed 3584 of 49999, Loss:1.9225 Accuracy: 0.4015, VQA Accuracy: 0.4015Processed 4096 of 49999, Loss:1.9198 Accuracy: 0.4065, VQA Accuracy: 0.4065Processed 4608 of 49999, Loss:1.9181 Accuracy: 0.4082, VQA Accuracy: 0.4082Processed 4999 of 49999, Loss:1.9187 Accuracy: 0.4067, VQA Accuracy: 0.4067Epoch 3, Accuracy: 0.40668133626725345
+Epoch 3, VQA Accuracy: 0.40668133626725345
+
+Processed 512 of 49999, Loss:1.7968 Accuracy: 0.4434, VQA Accuracy: 0.4434Processed 1024 of 49999, Loss:1.8639 Accuracy: 0.4170, VQA Accuracy: 0.4170Processed 1536 of 49999, Loss:1.8228 Accuracy: 0.4258, VQA Accuracy: 0.4258Processed 2048 of 49999, Loss:1.8218 Accuracy: 0.4253, VQA Accuracy: 0.4253Processed 2560 of 49999, Loss:1.8129 Accuracy: 0.4238, VQA Accuracy: 0.4238Processed 3072 of 49999, Loss:1.8143 Accuracy: 0.4212, VQA Accuracy: 0.4212Processed 3584 of 49999, Loss:1.8143 Accuracy: 0.4241, VQA Accuracy: 0.4241Processed 4096 of 49999, Loss:1.8161 Accuracy: 0.4219, VQA Accuracy: 0.4219Processed 4608 of 49999, Loss:1.8073 Accuracy: 0.4234, VQA Accuracy: 0.4234Processed 4999 of 49999, Loss:1.8024 Accuracy: 0.4239, VQA Accuracy: 0.4239Epoch 4, Accuracy: 0.42388477695539106
+Epoch 4, VQA Accuracy: 0.42388477695539106
+
+Processed 512 of 49999, Loss:1.7695 Accuracy: 0.3945, VQA Accuracy: 0.3945Processed 1024 of 49999, Loss:1.7465 Accuracy: 0.4131, VQA Accuracy: 0.4131Processed 1536 of 49999, Loss:1.7005 Accuracy: 0.4297, VQA Accuracy: 0.4297Processed 2048 of 49999, Loss:1.6960 Accuracy: 0.4395, VQA Accuracy: 0.4395Processed 2560 of 49999, Loss:1.6727 Accuracy: 0.4504, VQA Accuracy: 0.4504Processed 3072 of 49999, Loss:1.6602 Accuracy: 0.4580, VQA Accuracy: 0.4580Processed 3584 of 49999, Loss:1.6762 Accuracy: 0.4579, VQA Accuracy: 0.4579Processed 4096 of 49999, Loss:1.6841 Accuracy: 0.4536, VQA Accuracy: 0.4536Processed 4608 of 49999, Loss:1.6861 Accuracy: 0.4555, VQA Accuracy: 0.4555Processed 4999 of 49999, Loss:1.6842 Accuracy: 0.4529, VQA Accuracy: 0.4529Epoch 5, Accuracy: 0.4528905781156231
+Epoch 5, VQA Accuracy: 0.4528905781156231
+
+Processed 512 of 49999, Loss:1.6087 Accuracy: 0.4727, VQA Accuracy: 0.4727Processed 1024 of 49999, Loss:1.5876 Accuracy: 0.4814, VQA Accuracy: 0.4814Processed 1536 of 49999, Loss:1.5817 Accuracy: 0.4818, VQA Accuracy: 0.4818Processed 2048 of 49999, Loss:1.6108 Accuracy: 0.4741, VQA Accuracy: 0.4741Processed 2560 of 49999, Loss:1.6081 Accuracy: 0.4738, VQA Accuracy: 0.4738Processed 3072 of 49999, Loss:1.5895 Accuracy: 0.4740, VQA Accuracy: 0.4740Processed 3584 of 49999, Loss:1.5858 Accuracy: 0.4710, VQA Accuracy: 0.4710Processed 4096 of 49999, Loss:1.5755 Accuracy: 0.4734, VQA Accuracy: 0.4734Processed 4608 of 49999, Loss:1.5669 Accuracy: 0.4746, VQA Accuracy: 0.4746Processed 4999 of 49999, Loss:1.5615 Accuracy: 0.4737, VQA Accuracy: 0.4737Epoch 6, Accuracy: 0.4736947389477896
+Epoch 6, VQA Accuracy: 0.4736947389477896
+
+Processed 512 of 49999, Loss:1.4411 Accuracy: 0.5332, VQA Accuracy: 0.5332Processed 1024 of 49999, Loss:1.4914 Accuracy: 0.5039, VQA Accuracy: 0.5039Processed 1536 of 49999, Loss:1.4915 Accuracy: 0.4928, VQA Accuracy: 0.4928Processed 2048 of 49999, Loss:1.4798 Accuracy: 0.4878, VQA Accuracy: 0.4878Processed 2560 of 49999, Loss:1.4613 Accuracy: 0.4941, VQA Accuracy: 0.4941Processed 3072 of 49999, Loss:1.4583 Accuracy: 0.4935, VQA Accuracy: 0.4935Processed 3584 of 49999, Loss:1.4526 Accuracy: 0.4927, VQA Accuracy: 0.4927Processed 4096 of 49999, Loss:1.4425 Accuracy: 0.4934, VQA Accuracy: 0.4934Processed 4608 of 49999, Loss:1.4435 Accuracy: 0.4924, VQA Accuracy: 0.4924Processed 4999 of 49999, Loss:1.4390 Accuracy: 0.4933, VQA Accuracy: 0.4933Epoch 7, Accuracy: 0.49329865973194637
+Epoch 7, VQA Accuracy: 0.49329865973194637
+
+Processed 512 of 49999, Loss:1.4399 Accuracy: 0.4648, VQA Accuracy: 0.4648Processed 1024 of 49999, Loss:1.3621 Accuracy: 0.4980, VQA Accuracy: 0.4980Processed 1536 of 49999, Loss:1.3543 Accuracy: 0.4980, VQA Accuracy: 0.4980Processed 2048 of 49999, Loss:1.3616 Accuracy: 0.4956, VQA Accuracy: 0.4956Processed 2560 of 49999, Loss:1.3756 Accuracy: 0.4906, VQA Accuracy: 0.4906Processed 3072 of 49999, Loss:1.3652 Accuracy: 0.4912, VQA Accuracy: 0.4912Processed 3584 of 49999, Loss:1.3639 Accuracy: 0.4922, VQA Accuracy: 0.4922Processed 4096 of 49999, Loss:1.3590 Accuracy: 0.4966, VQA Accuracy: 0.4966Processed 4608 of 49999, Loss:1.3578 Accuracy: 0.5011, VQA Accuracy: 0.5011Processed 4999 of 49999, Loss:1.3618 Accuracy: 0.4989, VQA Accuracy: 0.4989Epoch 8, Accuracy: 0.4988997799559912
+Epoch 8, VQA Accuracy: 0.4988997799559912
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.2225, Overall: 0.534
+
+
+acc on overall : 0.534
+acc on 1 : 0.64
+acc on 2 : 0.96
+acc on 0 : 0.264
+acc on 4 : 0.334
+acc on 3 : 0.472
+
+
+Processed 512 of 49999, Loss:1.3263 Accuracy: 0.4941, VQA Accuracy: 0.4941Processed 1024 of 49999, Loss:1.3529 Accuracy: 0.4990, VQA Accuracy: 0.4990Processed 1536 of 49999, Loss:1.3376 Accuracy: 0.5000, VQA Accuracy: 0.5000Processed 2048 of 49999, Loss:1.3147 Accuracy: 0.5176, VQA Accuracy: 0.5176Processed 2560 of 49999, Loss:1.2923 Accuracy: 0.5176, VQA Accuracy: 0.5176Processed 3072 of 49999, Loss:1.2907 Accuracy: 0.5160, VQA Accuracy: 0.5160Processed 3584 of 49999, Loss:1.2826 Accuracy: 0.5209, VQA Accuracy: 0.5209Processed 4096 of 49999, Loss:1.2831 Accuracy: 0.5222, VQA Accuracy: 0.5222Processed 4608 of 49999, Loss:1.2892 Accuracy: 0.5213, VQA Accuracy: 0.5213Processed 4999 of 49999, Loss:1.2875 Accuracy: 0.5205, VQA Accuracy: 0.5205Epoch 9, Accuracy: 0.5205041008201641
+Epoch 9, VQA Accuracy: 0.5205041008201641
+
+Processed 512 of 49999, Loss:1.3197 Accuracy: 0.5020, VQA Accuracy: 0.5020Processed 1024 of 49999, Loss:1.2660 Accuracy: 0.5137, VQA Accuracy: 0.5137Processed 1536 of 49999, Loss:1.2523 Accuracy: 0.5215, VQA Accuracy: 0.5215Processed 2048 of 49999, Loss:1.2448 Accuracy: 0.5269, VQA Accuracy: 0.5269Processed 2560 of 49999, Loss:1.2534 Accuracy: 0.5250, VQA Accuracy: 0.5250Processed 3072 of 49999, Loss:1.2480 Accuracy: 0.5254, VQA Accuracy: 0.5254Processed 3584 of 49999, Loss:1.2340 Accuracy: 0.5329, VQA Accuracy: 0.5329Processed 4096 of 49999, Loss:1.2467 Accuracy: 0.5283, VQA Accuracy: 0.5283Processed 4608 of 49999, Loss:1.2451 Accuracy: 0.5310, VQA Accuracy: 0.5310Processed 4999 of 49999, Loss:1.2400 Accuracy: 0.5333, VQA Accuracy: 0.5333Epoch 10, Accuracy: 0.5333066613322665
+Epoch 10, VQA Accuracy: 0.5333066613322665
+
+Processed 512 of 49999, Loss:1.2318 Accuracy: 0.5215, VQA Accuracy: 0.5215Processed 1024 of 49999, Loss:1.2535 Accuracy: 0.5303, VQA Accuracy: 0.5303Processed 1536 of 49999, Loss:1.2090 Accuracy: 0.5449, VQA Accuracy: 0.5449Processed 2048 of 49999, Loss:1.1995 Accuracy: 0.5483, VQA Accuracy: 0.5483Processed 2560 of 49999, Loss:1.2044 Accuracy: 0.5402, VQA Accuracy: 0.5402Processed 3072 of 49999, Loss:1.1983 Accuracy: 0.5475, VQA Accuracy: 0.5475Processed 3584 of 49999, Loss:1.1960 Accuracy: 0.5519, VQA Accuracy: 0.5519Processed 4096 of 49999, Loss:1.1914 Accuracy: 0.5515, VQA Accuracy: 0.5515Processed 4608 of 49999, Loss:1.2055 Accuracy: 0.5456, VQA Accuracy: 0.5456Processed 4999 of 49999, Loss:1.2056 Accuracy: 0.5489, VQA Accuracy: 0.5489Epoch 11, Accuracy: 0.5489097819563913
+Epoch 11, VQA Accuracy: 0.5489097819563913
+
+Processed 512 of 49999, Loss:1.1349 Accuracy: 0.5781, VQA Accuracy: 0.5781Processed 1024 of 49999, Loss:1.1474 Accuracy: 0.5908, VQA Accuracy: 0.5908Processed 1536 of 49999, Loss:1.1592 Accuracy: 0.5918, VQA Accuracy: 0.5918Processed 2048 of 49999, Loss:1.1617 Accuracy: 0.5903, VQA Accuracy: 0.5903Processed 2560 of 49999, Loss:1.1597 Accuracy: 0.5840, VQA Accuracy: 0.5840Processed 3072 of 49999, Loss:1.1563 Accuracy: 0.5843, VQA Accuracy: 0.5843Processed 3584 of 49999, Loss:1.1490 Accuracy: 0.5857, VQA Accuracy: 0.5857Processed 4096 of 49999, Loss:1.1530 Accuracy: 0.5835, VQA Accuracy: 0.5835Processed 4608 of 49999, Loss:1.1519 Accuracy: 0.5818, VQA Accuracy: 0.5818Processed 4999 of 49999, Loss:1.1522 Accuracy: 0.5817, VQA Accuracy: 0.5817Epoch 12, Accuracy: 0.5817163432686537
+Epoch 12, VQA Accuracy: 0.5817163432686537
+
+Processed 512 of 49999, Loss:1.0637 Accuracy: 0.6055, VQA Accuracy: 0.6055Processed 1024 of 49999, Loss:1.1333 Accuracy: 0.6016, VQA Accuracy: 0.6016Processed 1536 of 49999, Loss:1.1313 Accuracy: 0.6009, VQA Accuracy: 0.6009Processed 2048 of 49999, Loss:1.1317 Accuracy: 0.5996, VQA Accuracy: 0.5996Processed 2560 of 49999, Loss:1.1367 Accuracy: 0.5988, VQA Accuracy: 0.5988Processed 3072 of 49999, Loss:1.1337 Accuracy: 0.5993, VQA Accuracy: 0.5993Processed 3584 of 49999, Loss:1.1399 Accuracy: 0.5985, VQA Accuracy: 0.5985Processed 4096 of 49999, Loss:1.1314 Accuracy: 0.5996, VQA Accuracy: 0.5996Processed 4608 of 49999, Loss:1.1228 Accuracy: 0.6005, VQA Accuracy: 0.6005Processed 4999 of 49999, Loss:1.1209 Accuracy: 0.6003, VQA Accuracy: 0.6003Epoch 13, Accuracy: 0.6003200640128026
+Epoch 13, VQA Accuracy: 0.6003200640128026
+
+Processed 512 of 49999, Loss:1.0750 Accuracy: 0.6016, VQA Accuracy: 0.6016Processed 1024 of 49999, Loss:1.0855 Accuracy: 0.5977, VQA Accuracy: 0.5977Processed 1536 of 49999, Loss:1.0913 Accuracy: 0.6009, VQA Accuracy: 0.6009Processed 2048 of 49999, Loss:1.0785 Accuracy: 0.6055, VQA Accuracy: 0.6055Processed 2560 of 49999, Loss:1.0794 Accuracy: 0.6055, VQA Accuracy: 0.6055Processed 3072 of 49999, Loss:1.0623 Accuracy: 0.6090, VQA Accuracy: 0.6090Processed 3584 of 49999, Loss:1.0680 Accuracy: 0.6060, VQA Accuracy: 0.6060Processed 4096 of 49999, Loss:1.0706 Accuracy: 0.6060, VQA Accuracy: 0.6060Processed 4608 of 49999, Loss:1.0801 Accuracy: 0.6059, VQA Accuracy: 0.6059Processed 4999 of 49999, Loss:1.0824 Accuracy: 0.6055, VQA Accuracy: 0.6055Epoch 14, Accuracy: 0.6055211042208442
+Epoch 14, VQA Accuracy: 0.6055211042208442
+
+Processed 512 of 49999, Loss:1.0805 Accuracy: 0.6367, VQA Accuracy: 0.6367Processed 1024 of 49999, Loss:1.0847 Accuracy: 0.6338, VQA Accuracy: 0.6338Processed 1536 of 49999, Loss:1.0643 Accuracy: 0.6315, VQA Accuracy: 0.6315Processed 2048 of 49999, Loss:1.0662 Accuracy: 0.6240, VQA Accuracy: 0.6240Processed 2560 of 49999, Loss:1.0640 Accuracy: 0.6234, VQA Accuracy: 0.6234Processed 3072 of 49999, Loss:1.0545 Accuracy: 0.6237, VQA Accuracy: 0.6237Processed 3584 of 49999, Loss:1.0561 Accuracy: 0.6211, VQA Accuracy: 0.6211Processed 4096 of 49999, Loss:1.0493 Accuracy: 0.6218, VQA Accuracy: 0.6218Processed 4608 of 49999, Loss:1.0468 Accuracy: 0.6230, VQA Accuracy: 0.6230Processed 4999 of 49999, Loss:1.0456 Accuracy: 0.6237, VQA Accuracy: 0.6237Epoch 15, Accuracy: 0.6237247449489898
+Epoch 15, VQA Accuracy: 0.6237247449489898
+
+Processed 512 of 49999, Loss:1.0558 Accuracy: 0.6094, VQA Accuracy: 0.6094Processed 1024 of 49999, Loss:1.0527 Accuracy: 0.6260, VQA Accuracy: 0.6260Processed 1536 of 49999, Loss:1.0449 Accuracy: 0.6276, VQA Accuracy: 0.6276Processed 2048 of 49999, Loss:1.0392 Accuracy: 0.6245, VQA Accuracy: 0.6245Processed 2560 of 49999, Loss:1.0171 Accuracy: 0.6320, VQA Accuracy: 0.6320Processed 3072 of 49999, Loss:1.0182 Accuracy: 0.6315, VQA Accuracy: 0.6315Processed 3584 of 49999, Loss:1.0139 Accuracy: 0.6331, VQA Accuracy: 0.6331Processed 4096 of 49999, Loss:1.0111 Accuracy: 0.6355, VQA Accuracy: 0.6355Processed 4608 of 49999, Loss:1.0119 Accuracy: 0.6317, VQA Accuracy: 0.6317Processed 4999 of 49999, Loss:1.0152 Accuracy: 0.6331, VQA Accuracy: 0.6331Epoch 16, Accuracy: 0.633126625325065
+Epoch 16, VQA Accuracy: 0.633126625325065
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.26700000000000007, Overall: 0.6408
+
+
+acc on overall : 0.6408
+acc on 1 : 0.666
+acc on 2 : 0.966
+acc on 0 : 0.332
+acc on 4 : 0.556
+acc on 3 : 0.684
+
+
+Processed 512 of 49999, Loss:0.9622 Accuracy: 0.6895, VQA Accuracy: 0.6895Processed 1024 of 49999, Loss:0.9623 Accuracy: 0.6729, VQA Accuracy: 0.6729Processed 1536 of 49999, Loss:0.9402 Accuracy: 0.6842, VQA Accuracy: 0.6842Processed 2048 of 49999, Loss:0.9655 Accuracy: 0.6670, VQA Accuracy: 0.6670Processed 2560 of 49999, Loss:0.9605 Accuracy: 0.6656, VQA Accuracy: 0.6656Processed 3072 of 49999, Loss:0.9503 Accuracy: 0.6699, VQA Accuracy: 0.6699Processed 3584 of 49999, Loss:0.9541 Accuracy: 0.6649, VQA Accuracy: 0.6649Processed 4096 of 49999, Loss:0.9574 Accuracy: 0.6638, VQA Accuracy: 0.6638Processed 4608 of 49999, Loss:0.9598 Accuracy: 0.6602, VQA Accuracy: 0.6602Processed 4999 of 49999, Loss:0.9701 Accuracy: 0.6559, VQA Accuracy: 0.6559Epoch 17, Accuracy: 0.6559311862372474
+Epoch 17, VQA Accuracy: 0.6559311862372474
+
+Processed 512 of 49999, Loss:0.9582 Accuracy: 0.6406, VQA Accuracy: 0.6406Processed 1024 of 49999, Loss:0.9559 Accuracy: 0.6572, VQA Accuracy: 0.6572Processed 1536 of 49999, Loss:0.9459 Accuracy: 0.6595, VQA Accuracy: 0.6595Processed 2048 of 49999, Loss:0.9439 Accuracy: 0.6621, VQA Accuracy: 0.6621Processed 2560 of 49999, Loss:0.9476 Accuracy: 0.6605, VQA Accuracy: 0.6605Processed 3072 of 49999, Loss:0.9606 Accuracy: 0.6546, VQA Accuracy: 0.6546Processed 3584 of 49999, Loss:0.9516 Accuracy: 0.6588, VQA Accuracy: 0.6588Processed 4096 of 49999, Loss:0.9446 Accuracy: 0.6614, VQA Accuracy: 0.6614Processed 4608 of 49999, Loss:0.9413 Accuracy: 0.6612, VQA Accuracy: 0.6612Processed 4999 of 49999, Loss:0.9420 Accuracy: 0.6619, VQA Accuracy: 0.6619Epoch 18, Accuracy: 0.6619323864772955
+Epoch 18, VQA Accuracy: 0.6619323864772955
+
+Processed 512 of 49999, Loss:0.9576 Accuracy: 0.6328, VQA Accuracy: 0.6328Processed 1024 of 49999, Loss:0.9163 Accuracy: 0.6621, VQA Accuracy: 0.6621Processed 1536 of 49999, Loss:0.9191 Accuracy: 0.6628, VQA Accuracy: 0.6628Processed 2048 of 49999, Loss:0.9076 Accuracy: 0.6646, VQA Accuracy: 0.6646Processed 2560 of 49999, Loss:0.9132 Accuracy: 0.6645, VQA Accuracy: 0.6645Processed 3072 of 49999, Loss:0.9059 Accuracy: 0.6673, VQA Accuracy: 0.6673Processed 3584 of 49999, Loss:0.9069 Accuracy: 0.6705, VQA Accuracy: 0.6705Processed 4096 of 49999, Loss:0.9064 Accuracy: 0.6729, VQA Accuracy: 0.6729Processed 4608 of 49999, Loss:0.9040 Accuracy: 0.6749, VQA Accuracy: 0.6749Processed 4999 of 49999, Loss:0.9119 Accuracy: 0.6717, VQA Accuracy: 0.6717Epoch 19, Accuracy: 0.6717343468693738
+Epoch 19, VQA Accuracy: 0.6717343468693738
+
+Processed 512 of 49999, Loss:0.8657 Accuracy: 0.6934, VQA Accuracy: 0.6934Processed 1024 of 49999, Loss:0.8755 Accuracy: 0.6943, VQA Accuracy: 0.6943Processed 1536 of 49999, Loss:0.8984 Accuracy: 0.6849, VQA Accuracy: 0.6849Processed 2048 of 49999, Loss:0.8708 Accuracy: 0.6953, VQA Accuracy: 0.6953Processed 2560 of 49999, Loss:0.8782 Accuracy: 0.6910, VQA Accuracy: 0.6910Processed 3072 of 49999, Loss:0.8727 Accuracy: 0.6934, VQA Accuracy: 0.6934Processed 3584 of 49999, Loss:0.8795 Accuracy: 0.6889, VQA Accuracy: 0.6889Processed 4096 of 49999, Loss:0.8890 Accuracy: 0.6858, VQA Accuracy: 0.6858Processed 4608 of 49999, Loss:0.8913 Accuracy: 0.6827, VQA Accuracy: 0.6827Processed 4999 of 49999, Loss:0.8890 Accuracy: 0.6823, VQA Accuracy: 0.6823Epoch 20, Accuracy: 0.6823364672934586
+Epoch 20, VQA Accuracy: 0.6823364672934586
+
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.26733333333333337, Overall: 0.6416
+
+
+acc on overall : 0.6416
+acc on 1 : 0.6
+acc on 2 : 0.944
+acc on 0 : 0.36
+acc on 4 : 0.6
+acc on 3 : 0.704
+
+
+Base init completed!
+
+here is get boundaries , num_pts : 49999
+Training in streaming fashion...
+ Network will evaluate at: [4999, 9999, 14999, 19999, 24999, 29999, 34999, 39999, 44999, 49999]
+Processed 512 of 50176Processed 1024 of 50176Processed 1536 of 50176Processed 2048 of 50176Processed 2560 of 50176Processed 3072 of 50176Processed 3584 of 50176Processed 4096 of 50176Processed 4608 of 501764999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.2768333333333333, Overall: 0.6644
+
+
+acc on overall : 0.6644
+acc on 1 : 0.666
+acc on 2 : 0.95
+acc on 0 : 0.316
+acc on 4 : 0.586
+acc on 3 : 0.804
+
+
+Processed 5120 of 50176Processed 5632 of 50176Processed 6144 of 50176Processed 6656 of 50176Processed 7168 of 50176Processed 7680 of 50176Processed 8192 of 50176Processed 8704 of 50176Processed 9216 of 50176Processed 9728 of 501769999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.2735, Overall: 0.6564
+
+
+acc on overall : 0.6564
+acc on 1 : 0.636
+acc on 2 : 0.966
+acc on 0 : 0.278
+acc on 4 : 0.58
+acc on 3 : 0.822
+
+
+Processed 10240 of 50176Processed 10752 of 50176Processed 11264 of 50176Processed 11776 of 50176Processed 12288 of 50176Processed 12800 of 50176Processed 13312 of 50176Processed 13824 of 50176Processed 14336 of 50176Processed 14848 of 5017614999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.2796666666666667, Overall: 0.6712
+
+
+acc on overall : 0.6712
+acc on 1 : 0.526
+acc on 2 : 0.968
+acc on 0 : 0.352
+acc on 4 : 0.634
+acc on 3 : 0.876
+
+
+Processed 15360 of 50176Processed 15872 of 50176Processed 16384 of 50176Processed 16896 of 50176Processed 17408 of 50176Processed 17920 of 50176Processed 18432 of 50176Processed 18944 of 50176Processed 19456 of 50176Processed 19968 of 5017619999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.2906666666666667, Overall: 0.6976
+
+
+acc on overall : 0.6976
+acc on 1 : 0.662
+acc on 2 : 0.962
+acc on 0 : 0.376
+acc on 4 : 0.644
+acc on 3 : 0.844
+
+
+Processed 20480 of 50176Processed 20992 of 50176Processed 21504 of 50176Processed 22016 of 50176Processed 22528 of 50176Processed 23040 of 50176Processed 23552 of 50176Processed 24064 of 50176Processed 24576 of 5017624999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.29200000000000004, Overall: 0.7008
+
+
+acc on overall : 0.7008
+acc on 1 : 0.668
+acc on 2 : 0.964
+acc on 0 : 0.342
+acc on 4 : 0.66
+acc on 3 : 0.87
+
+
+Processed 25088 of 50176Processed 25600 of 50176Processed 26112 of 50176Processed 26624 of 50176Processed 27136 of 50176Processed 27648 of 50176Processed 28160 of 50176Processed 28672 of 50176Processed 29184 of 50176Processed 29696 of 5017629999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.296, Overall: 0.7104
+
+
+acc on overall : 0.7104
+acc on 1 : 0.712
+acc on 2 : 0.974
+acc on 0 : 0.34
+acc on 4 : 0.652
+acc on 3 : 0.874
+
+
+Processed 30208 of 50176Processed 30720 of 50176Processed 31232 of 50176Processed 31744 of 50176Processed 32256 of 50176Processed 32768 of 50176Processed 33280 of 50176Processed 33792 of 50176Processed 34304 of 50176Processed 34816 of 5017634999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.301, Overall: 0.7224
+
+
+acc on overall : 0.7224
+acc on 1 : 0.728
+acc on 2 : 0.966
+acc on 0 : 0.346
+acc on 4 : 0.692
+acc on 3 : 0.88
+
+
+Processed 35328 of 50176Processed 35840 of 50176Processed 36352 of 50176Processed 36864 of 50176Processed 37376 of 50176Processed 37888 of 50176Processed 38400 of 50176Processed 38912 of 50176Processed 39424 of 50176Processed 39936 of 5017639999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.3, Overall: 0.72
+
+
+acc on overall : 0.72
+acc on 1 : 0.708
+acc on 2 : 0.982
+acc on 0 : 0.338
+acc on 4 : 0.7
+acc on 3 : 0.872
+
+
+Processed 40448 of 50176Processed 40960 of 50176Processed 41472 of 50176Processed 41984 of 50176Processed 42496 of 50176Processed 43008 of 50176Processed 43520 of 50176Processed 44032 of 50176Processed 44544 of 5017644999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.3011666666666667, Overall: 0.7228
+
+
+acc on overall : 0.7228
+acc on 1 : 0.714
+acc on 2 : 0.962
+acc on 0 : 0.348
+acc on 4 : 0.7
+acc on 3 : 0.89
+
+
+Processed 45056 of 50176Processed 45568 of 50176Processed 46080 of 50176Processed 46592 of 50176Processed 47104 of 50176Processed 47616 of 50176Processed 48128 of 50176Processed 48640 of 50176Processed 49152 of 50176Processed 49664 of 5017649999 Boundary reached, evaluating...
+Testing...
+Processed 512 of 2560Processed 1024 of 2560Processed 1536 of 2560Processed 2048 of 2560Processed 2500 of 2560Mean Per Type: 0.30583333333333335, Overall: 0.734
+
+
+acc on overall : 0.734
+acc on 1 : 0.76
+acc on 2 : 0.976
+acc on 0 : 0.348
+acc on 4 : 0.694
+acc on 3 : 0.892
+
+
 Processed 49999 of 50176

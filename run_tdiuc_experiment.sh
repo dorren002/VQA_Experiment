@@ -5,7 +5,7 @@ lr=2e-3
 CONFIG=TDIUC_streaming
 export PYTHONPATH=/home/qzhb/dorren/CL4VQA/REMIND
 
-DATA_ORDER=qtype
+DATA_ORDER=iid
 expt=${CONFIG}_${DATA_ORDER}_${lr}
 QTYPE=-1 # or type name
 MODE=limited_buffer
