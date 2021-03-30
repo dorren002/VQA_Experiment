@@ -12,7 +12,7 @@ from vqa_models import WordEmbedding
 # weights so that it is easy to reproduce later.
 
 # Data
-data_path = '/home/qzhb/dorren/CL4VQA/TDIUC/'
+data_path = '/media/qzhb/DATA1/yi/dorren/'
 dataset = 'tdiuc'
 img_feat = 'resnetpq_qtype'  # updn, resnet, updnmkii, resnetmkii
 mkii = False  # If you want to also load codebook indices
