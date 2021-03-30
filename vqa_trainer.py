@@ -486,8 +486,7 @@ def main():
                     os.path.join(config.expt_dir, 'config_' + args.config_name + '.py'))
         # 直接训练了
         if not args.stream and not args.stream_with_rehearsal:
-            training_loop(config, net, train_data, val_data, optimizer, criterion, config.expt_dir, 
-                          net_running, start_epoch)
+            training_loop(config, net, train_data, val_data, optimizer, criterion, config.expt_dir,net_running,start_epoch)
         # 又进行了一次切片 
         elif config.max_epochs > 0:
             train_base_init(config, net, train_data, val_data, optimizer, criterion, args.expt_name, net_running)
