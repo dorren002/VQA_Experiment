@@ -16,7 +16,7 @@ CUDA_VISIBLE_DEVICES=0 nohup python -u vqa_trainer.py \
 --config_name ${CONFIG} \
 --expt_name ${expt} \
 --data_order ${DATA_ORDER} \
---stream_with_rehearsal \
+--exstream \
 --rehearsal_mode ${MODE} \
 --max_buffer_size ${BUFFERSIZE} \
 --only_qtype ${QTYPE} \

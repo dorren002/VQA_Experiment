@@ -267,6 +267,12 @@ def build_rehearsal_dataloader(dataset, rehearsal_ixs, num_rehearsal_samples):
     return loader
 
 
+def build_rehearsal_dataloader_with_limited_buffer_exstream(dataset, rehearsal_ixs,max_buffer_size,buffer_replacement_strategy):
+    rehearsal_batch_sampler = ExStreamFixedBufferRehearsalBatchSampler(max_buffer_size,buffer_replacement_strategy)
+    loader = DataLoader(dataset, batch_sampler=rehearsal_batch_sampler)
+    return loader
+
+
 def build_rehearsal_dataloader_with_limited_buffer(dataset, rehearsal_ixs, num_rehearsal_samples,
                                                    max_buffer_size, buffer_replacement_strategy):
     rehearsal_batch_sampler = FixedBufferRehearsalBatchSampler(max_buffer_size, num_rehearsal_samples,

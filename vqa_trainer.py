@@ -31,6 +31,7 @@ parser.add_argument('--max_buffer_size', type=int, default=None)
 parser.add_argument('--buffer_replacement_strategy', type=str, choices=['queue', 'random'], default='random')
 parser.add_argument('--lr', type=float, default=None)
 parser.add_argument('--only_qtype', type=int, default=None)
+parser.add_argument('--exstream', action='store_true')
 parser.add_argument('--use_exponential_averaging', action='store_true')
 
 # parser.add_argument('--num_base_init_samples', type=int, default=None) # 69998
@@ -281,6 +282,58 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                 Qs, Im, Ql, Ai = Qs.unsqueeze(0), Im.unsqueeze(0), Ql.unsqueeze(0), Ai.unsqueeze(0) # 当前的
                 if index > 0:
                     Q_r, Qs_r, Im_r, Qid_r, Iid_r, Ai_r, Tai_r, Ql_r = next(rehearsal_data_iter)
+                    # print(Im_r.shape)
+                    Qs_merged, Im_merged, Ql_merged, Ai_merged = merge_data(Qs, Im, Ql, Ai, Qs_r, Im_r, Ql_r, Ai_r)
+                else:
+                    Qs_merged, Im_merged, Ql_merged, Ai_merged = Qs, Im, Ql, Ai
+
+                # print('here')
+                p = net(Qs_merged, Im_merged, Ql_merged)
+                loss = criterion(p, Ai_merged)
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+                if iter_cnt in boundaries:
+                    print('\n\nBoundary {} reached, evaluating...'.format(iter_cnt))
+                    predict(eval_net, test_data, 'NA', config.expt_dir, config, iter_cnt)
+                #    save(eval_net, optimizer, 'NA', config.expt_dir, suffix='boundary_{}'.format(iter_cnt))
+                    net.train()
+                index += 1
+            inline_print('Processed {0} of {1}'.format(iter_cnt, len(data) * data.batch_size))
+        elif args.exstream:
+            if iter_cnt == 0:
+                print('Training in ExStream fashion...')
+                print(' Network will evaluate at: {}'.format(boundaries))
+                rehearsal_ixs = []
+
+                if args.rehearsal_mode == 'limited_buffer':
+                    rehearsal_data = build_rehearsal_dataloader_with_limited_buffer_exstream(data.dataset,
+                                                                                    rehearsal_ixs,
+                                                                                    args.max_buffer_size,
+                                                                                    config.buffer_replacement_strategy)
+
+            for Q, Qs, Im, Qid, Iid, Ai, Tai, Ql in zip(qfeat, qseq, imfeat, qid, iid, aidx, ten_aidx, qlen):
+                iter_cnt += 1
+                Qs = Qs.cuda()
+                Ql = Ql.cuda()
+                Im = Im.cuda()
+                Ai = Ai.long().cuda() #排序的answer id
+
+                # rehearsal_ixs.append(index)
+                # index是buffer里的？id，Ai是排序的answerid
+                rehearsal_data.batch_sampler.update_buffer(index, int(Ai), imfeat)# 更新buffer
+
+                # Do not stream until we reach the first boundary point
+                if index < boundaries[0]:
+                    index += 1
+                    continue
+                
+                # Start streaming after first boundary point 遇到boundary训练剩下的
+                rehearsal_data_iter = iter(rehearsal_data)
+
+                Qs, Im, Ql, Ai = Qs.unsqueeze(0), Im.unsqueeze(0), Ql.unsqueeze(0), Ai.unsqueeze(0) # 当前的
+                if index > 0:
+                    Q_r, Qs_r, Im_r, Qid_r, Iid_r, Ai_r, Tai_r, Ql_r = next(rehearsal_data_iter)
                     print(Im_r.shape)
                     Qs_merged, Im_merged, Ql_merged, Ai_merged = merge_data(Qs, Im, Ql, Ai, Qs_r, Im_r, Ql_r, Ai_r)
                 else:
@@ -299,6 +352,7 @@ def stream(net, data, test_data, optimizer, criterion, config, net_running):
                     net.train()
                 index += 1
             inline_print('Processed {0} of {1}'.format(iter_cnt, len(data) * data.batch_size))
+
 
 
 def predict(eval_net, data, epoch, expt_name, config, iter_cnt=None):
