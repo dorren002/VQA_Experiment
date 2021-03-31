@@ -11,7 +11,7 @@ import numpy as np
 import torch
 from torch.utils.data import Dataset, DataLoader
 # from cnn_lava.streaming_using_features import RehearsalBatchSampler
-from data_utils import RehearsalBatchSampler, FixedBufferRehearsalBatchSampler
+from data_utils import RehearsalBatchSampler, FixedBufferRehearsalBatchSampler, ExStreamFixedBufferRehearsalBatchSampler
 from torch.utils.data.sampler import SubsetRandomSampler
 
 # 按问题排列[{q1},{q2}]

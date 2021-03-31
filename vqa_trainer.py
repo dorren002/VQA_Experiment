@@ -13,7 +13,7 @@ import torch
 
 import configs.config_TDIUC_streaming as config
 from vqa_dataloader import build_dataloaders, build_rehearsal_dataloader, build_base_init_dataloader, \
-    build_rehearsal_dataloader_with_limited_buffer
+    build_rehearsal_dataloader_with_limited_buffer, build_rehearsal_dataloader_with_limited_buffer_exstream
 import vqa_dataloader as vqaloader
 from metric import compute_accuracy
 
@@ -539,7 +539,7 @@ def main():
         shutil.copy('configs/config_' + args.config_name + '.py',
                     os.path.join(config.expt_dir, 'config_' + args.config_name + '.py'))
         # 直接训练了
-        if not args.stream and not args.stream_with_rehearsal:
+        if not args.stream and not args.stream_with_rehearsal and not args.exstream:
             training_loop(config, net, train_data, val_data, optimizer, criterion, config.expt_dir,net_running,start_epoch)
         # 又进行了一次切片 
         elif config.max_epochs > 0:
